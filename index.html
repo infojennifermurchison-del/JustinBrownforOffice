@@ -1,0 +1,1325 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Justin Brown — Layout Prototype</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
+<style>
+  /* ============================================================
+     PALETTE + TYPE TOKENS
+     ============================================================ */
+  :root{
+    --ink:#131E29;
+    --ink-2:#1D2B38;
+    --paper:#F7F4ED;
+    --paper-2:#EBE5D9;
+    --brick:#A8402C;
+    --gold:#D9A441;
+    --stone:#6F7A72;
+
+    --serif:'Newsreader', Georgia, 'Times New Roman', serif;
+    --sans:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
+
+    --hair:1px solid rgba(19,30,41,.16);
+    --hair-strong:1px solid rgba(19,30,41,.30);
+    --maxw:1120px;
+  }
+
+  *{box-sizing:border-box;}
+  html{-webkit-text-size-adjust:100%;}
+  body{
+    margin:0;
+    font-family:var(--sans);
+    background:var(--paper);
+    color:var(--ink);
+    line-height:1.6;
+    font-size:17px;
+    -webkit-font-smoothing:antialiased;
+  }
+  img{max-width:100%;display:block;}
+
+  h1,h2,h3,h4{
+    font-family:var(--serif);
+    font-weight:500;
+    letter-spacing:-.02em;
+    line-height:1.05;
+    margin:0;
+  }
+
+  a{color:var(--brick);}
+  a:hover{color:var(--ink);}
+
+  /* Focus visibility */
+  :focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+  a:focus-visible, button:focus-visible, input:focus-visible,
+  textarea:focus-visible, select:focus-visible, .chip:focus-visible{
+    outline:3px solid var(--gold);
+    outline-offset:2px;
+  }
+
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 24px;}
+
+  /* ============================================================
+     PLACEHOLDER MARKING
+     ============================================================ */
+  /* Inline placeholder copy: muted stone + dotted underline */
+  .ph{
+    color:var(--stone);
+    text-decoration:underline dotted rgba(111,122,114,.7);
+    text-underline-offset:3px;
+  }
+  .ph-block{
+    color:var(--stone);
+  }
+  .ph-block p{
+    text-decoration:underline dotted rgba(111,122,114,.55);
+    text-underline-offset:3px;
+  }
+
+  /* On dark surfaces the muted color needs to lift */
+  .on-dark .ph, .on-dark .ph-block{
+    color:#B9C2BC;
+    text-decoration-color:rgba(185,194,188,.6);
+  }
+  .on-dark .ph-block p{ text-decoration-color:rgba(185,194,188,.45); }
+
+  /* Image slots: dashed outline boxes */
+  .slot{
+    border:2px dashed var(--stone);
+    border-radius:2px;
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(111,122,114,.05) 0 10px,
+        rgba(111,122,114,0) 10px 20px);
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    text-align:center;
+    padding:16px;
+    color:var(--stone);
+    gap:4px;
+  }
+  .slot .slot-label{
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.12em;
+    text-transform:uppercase;
+  }
+  .slot .slot-ratio{
+    font-family:var(--serif);
+    font-size:15px;
+    font-style:italic;
+    letter-spacing:0;
+  }
+  .on-dark .slot{
+    border-color:#8B958E;
+    color:#B9C2BC;
+  }
+
+  .r-4x5{aspect-ratio:4/5;}
+  .r-1x1{aspect-ratio:1/1;}
+  .r-3x2{aspect-ratio:3/2;}
+  .r-16x9{aspect-ratio:16/9;}
+
+  /* ============================================================
+     REVIEW SCAFFOLDING TAGS  (A / LABEL)
+     ============================================================ */
+  .sec{position:relative;}
+  .tag{
+    position:absolute;
+    top:0;
+    left:0;
+    transform:translateY(-50%);
+    display:inline-flex;
+    align-items:center;
+    gap:6px;
+    background:var(--paper);
+    border:1px solid var(--stone);
+    border-radius:2px;
+    padding:2px 8px;
+    font-size:11px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--stone);
+    z-index:3;
+    pointer-events:none;
+  }
+  .tag b{
+    color:var(--brick);
+    font-weight:700;
+    letter-spacing:.06em;
+  }
+  .on-dark .tag{
+    background:var(--ink);
+    border-color:#5c6a63;
+    color:#B9C2BC;
+  }
+  .on-dark .tag b{color:var(--gold);}
+
+  /* ============================================================
+     PROTOTYPE BANNER
+     ============================================================ */
+  .proto-banner{
+    background:var(--gold);
+    color:var(--ink);
+    text-align:center;
+    padding:8px 16px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.04em;
+    border-bottom:2px solid var(--ink);
+    position:sticky;
+    top:0;
+    z-index:60;
+  }
+  .proto-banner strong{ text-transform:uppercase; letter-spacing:.1em; }
+
+  /* ============================================================
+     HEADER / NAV
+     ============================================================ */
+  .site-head{
+    background:var(--paper);
+    border-bottom:var(--hair-strong);
+    position:sticky;
+    top:33px; /* under banner */
+    z-index:50;
+  }
+  .head-inner{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:16px;
+    height:68px;
+  }
+  .brand{
+    display:flex;
+    align-items:baseline;
+    gap:10px;
+    cursor:pointer;
+    background:none;border:none;padding:0;
+    font-family:var(--serif);
+    text-align:left;
+  }
+  .brand .b-name{
+    font-size:22px;
+    font-weight:600;
+    letter-spacing:-.02em;
+    color:var(--ink);
+    line-height:1;
+  }
+  .brand .b-office{
+    font-family:var(--sans);
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--stone);
+    font-weight:600;
+  }
+
+  .nav{display:flex;align-items:center;gap:4px;}
+  .nav-link{
+    font-family:var(--sans);
+    background:none;
+    border:none;
+    border-bottom:2px solid transparent;
+    padding:8px 12px;
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    color:var(--ink);
+    cursor:pointer;
+    border-radius:2px;
+  }
+  .nav-link:hover{color:var(--brick);}
+  .nav-link.active{
+    color:var(--brick);
+    border-bottom-color:var(--brick);
+  }
+
+  .nav-cta{
+    margin-left:8px;
+  }
+
+  .menu-btn{
+    display:none;
+    background:var(--ink);
+    color:var(--paper);
+    border:none;
+    border-radius:2px;
+    padding:10px 14px;
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    cursor:pointer;
+    align-items:center;
+    gap:8px;
+  }
+
+  /* ============================================================
+     BUTTONS
+     ============================================================ */
+  .btn{
+    display:inline-flex;
+    align-items:center;
+    justify-content:center;
+    gap:8px;
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    padding:13px 22px;
+    border-radius:2px;
+    border:2px solid transparent;
+    cursor:pointer;
+    text-decoration:none;
+    line-height:1;
+    transition:background .15s ease, color .15s ease, border-color .15s ease;
+  }
+  .btn-primary{ background:var(--brick); color:var(--paper); border-color:var(--brick); }
+  .btn-primary:hover{ background:#8f3423; color:var(--paper); }
+  .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
+  .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
+  .btn-gold{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+  .btn-gold:hover{ background:#c4902f; }
+  .on-dark .btn-secondary{ color:var(--paper); border-color:var(--paper); }
+  .on-dark .btn-secondary:hover{ background:var(--paper); color:var(--ink); }
+  .btn-sm{ padding:9px 16px; font-size:12px; }
+  .btn-block{ width:100%; }
+
+  /* ============================================================
+     SHARED SECTION SCAFFOLD
+     ============================================================ */
+  .eyebrow{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    color:var(--brick);
+    font-variant:small-caps;
+    display:block;
+    margin-bottom:12px;
+  }
+  .on-dark .eyebrow{ color:var(--gold); }
+
+  .section{ padding:72px 0; border-top:var(--hair); }
+  .section:first-of-type{ border-top:none; }
+
+  .page-header{
+    padding:56px 0 40px;
+    background:var(--paper-2);
+    border-bottom:var(--hair);
+  }
+  .page-header h1{
+    font-size:clamp(38px,6vw,64px);
+  }
+  .page-header .eyebrow{ margin-bottom:14px; }
+
+  .lede{ font-size:19px; max-width:60ch; }
+
+  /* Card */
+  .card{
+    background:var(--paper);
+    border:var(--hair);
+    border-top:4px solid var(--brick);
+    border-radius:2px;
+    padding:26px 24px;
+  }
+  .card h3{ font-size:23px; margin-bottom:10px; }
+  .card.top-gold{ border-top-color:var(--gold); }
+  .card.top-stone{ border-top-color:var(--stone); }
+  .card.top-ink{ border-top-color:var(--ink); }
+
+  .grid-3{ display:grid; grid-template-columns:repeat(3,1fr); gap:22px; }
+  .grid-2{ display:grid; grid-template-columns:1fr 1fr; gap:40px; }
+
+  /* ============================================================
+     HERO
+     ============================================================ */
+  .hero{ padding:80px 0 72px; }
+  /* first section on a page has no element above it, so drop its tag inside */
+  .hero .tag{ top:16px; transform:none; }
+  /* nested column tags: give the eyebrow room so the tag doesn't overlap it */
+  .give-col.sec, .contact-grid > .sec{ padding-top:16px; }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.4fr .9fr;
+    gap:56px;
+    align-items:center;
+  }
+  .ballot-lockup{
+    display:flex;
+    align-items:center;
+    gap:16px;
+    margin-bottom:22px;
+  }
+  .ballot-mark{
+    width:52px;
+    height:52px;
+    border:3px solid var(--gold);
+    border-radius:2px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-shrink:0;
+  }
+  .ballot-mark svg{ width:34px; height:34px; display:block; }
+  .ballot-lockup .ballot-office{
+    font-family:var(--sans);
+    font-size:13px;
+    letter-spacing:.2em;
+    text-transform:uppercase;
+    font-weight:600;
+    color:var(--stone);
+    font-variant:small-caps;
+  }
+  .hero h1{
+    font-size:clamp(52px,9vw,104px);
+    letter-spacing:-.035em;
+    line-height:.95;
+  }
+  .hero .office-line{
+    font-family:var(--serif);
+    font-style:italic;
+    font-size:clamp(20px,3vw,26px);
+    color:var(--brick);
+    margin-top:12px;
+  }
+  .hero .hero-sent{ margin-top:22px; font-size:19px; max-width:46ch; }
+  .hero-btns{ display:flex; gap:14px; margin-top:30px; flex-wrap:wrap; }
+  .hero-portrait{ }
+
+  /* Priorities strip below hero handled by cards */
+  .priority-card .p-num{
+    font-family:var(--serif);
+    font-size:15px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    display:block;
+    margin-bottom:8px;
+  }
+
+  /* Next event teaser */
+  .teaser{
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+    gap:28px;
+    background:var(--paper-2);
+    border:var(--hair);
+    border-left:4px solid var(--gold);
+    border-radius:2px;
+    padding:28px 30px;
+    flex-wrap:wrap;
+  }
+  .teaser .t-date{
+    font-family:var(--serif);
+    font-size:15px;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--brick);
+    font-weight:600;
+    margin-bottom:6px;
+  }
+  .teaser h3{ font-size:26px; }
+
+  /* Action band */
+  .action-band{
+    background:var(--ink);
+    color:var(--paper);
+  }
+  .action-band .wrap{ padding-top:64px; padding-bottom:64px; }
+  .action-band h2{ font-size:clamp(30px,4.5vw,46px); color:var(--paper); }
+  .action-band p{ color:#C9D0CB; max-width:52ch; }
+  .action-band .hero-btns{ margin-top:26px; }
+
+  /* ============================================================
+     ABOUT — STORY / FAMILY / RECORD
+     ============================================================ */
+  .story-grid{
+    display:grid;
+    grid-template-columns:1fr .8fr;
+    gap:48px;
+    align-items:start;
+  }
+  .family-photos{ display:grid; grid-template-columns:repeat(3,1fr); gap:18px; margin-top:22px; }
+
+  .record{ }
+  .record-row{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:32px;
+    padding:30px 0;
+    border-top:var(--hair-strong);
+    align-items:start;
+  }
+  .record-row:last-child{ border-bottom:var(--hair-strong); }
+  .record-year{
+    font-family:var(--serif);
+    font-size:clamp(46px,7vw,74px);
+    line-height:.9;
+    letter-spacing:-.03em;
+    color:var(--ink);
+  }
+  .record-entry h3{ font-size:24px; margin-bottom:8px; }
+  .record-note{
+    background:var(--paper-2);
+    border-left:4px solid var(--brick);
+    padding:16px 18px;
+    border-radius:2px;
+    margin-top:14px;
+    font-size:15px;
+  }
+
+  /* ============================================================
+     EVENTS
+     ============================================================ */
+  .event-row{
+    display:grid;
+    grid-template-columns:120px 1fr auto;
+    gap:28px;
+    align-items:center;
+    padding:26px 0;
+    border-top:var(--hair-strong);
+  }
+  .event-row:last-of-type{ border-bottom:var(--hair-strong); }
+  .date-block{
+    border:var(--hair-strong);
+    border-top:4px solid var(--gold);
+    border-radius:2px;
+    text-align:center;
+    padding:12px 8px;
+  }
+  .date-block .d-month{
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    font-variant:small-caps;
+    color:var(--brick);
+    display:block;
+  }
+  .date-block .d-day{
+    font-family:var(--serif);
+    font-size:44px;
+    line-height:1;
+    letter-spacing:-.02em;
+    display:block;
+    margin-top:2px;
+  }
+  .event-mid h3{ font-size:22px; margin-bottom:6px; }
+  .event-meta{ font-size:14px; color:var(--stone); }
+
+  /* Forms */
+  .form-field{ margin-bottom:18px; }
+  label{
+    display:block;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:600;
+    letter-spacing:.1em;
+    text-transform:uppercase;
+    color:var(--ink);
+    margin-bottom:7px;
+  }
+  .on-dark label{ color:var(--paper); }
+  input[type=text],
+  input[type=email],
+  input[type=tel],
+  select,
+  textarea{
+    width:100%;
+    font-family:var(--sans);
+    font-size:16px;
+    color:var(--ink);
+    background:var(--paper);
+    border:var(--hair-strong);
+    border-radius:2px;
+    padding:12px 14px;
+  }
+  textarea{ resize:vertical; min-height:130px; }
+  .field-row{ display:grid; grid-template-columns:1fr 1fr; gap:18px; }
+
+  .form-card{
+    background:var(--paper);
+    border:var(--hair);
+    border-top:4px solid var(--stone);
+    border-radius:2px;
+    padding:30px 28px;
+  }
+
+  /* Interest chips */
+  .chips{ display:flex; flex-wrap:wrap; gap:10px; }
+  .chip{
+    font-family:var(--sans);
+    font-size:13px;
+    font-weight:600;
+    letter-spacing:.04em;
+    padding:8px 14px;
+    border:var(--hair-strong);
+    border-radius:2px;
+    background:var(--paper);
+    color:var(--ink);
+    cursor:pointer;
+  }
+  .chip[aria-pressed="true"]{
+    background:var(--ink);
+    color:var(--paper);
+    border-color:var(--ink);
+  }
+  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(247,244,237,.4); }
+  .on-dark .chip[aria-pressed="true"]{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+
+  /* ============================================================
+     GET INVOLVED
+     ============================================================ */
+  .give-band{ background:var(--ink); color:var(--paper); }
+  .give-grid{ display:grid; grid-template-columns:1fr 1fr; gap:44px; }
+  .give-col h2{ color:var(--paper); font-size:30px; margin-bottom:8px; }
+
+  .amount-tiles{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:12px;
+    margin:20px 0 18px;
+  }
+  .amount-tile{
+    font-family:var(--serif);
+    font-size:26px;
+    text-align:center;
+    padding:20px 6px;
+    border:2px solid rgba(247,244,237,.35);
+    border-radius:2px;
+    background:transparent;
+    color:var(--paper);
+    cursor:pointer;
+    letter-spacing:-.02em;
+  }
+  .amount-tile[aria-pressed="true"]{
+    border-color:var(--gold);
+    background:rgba(217,164,65,.14);
+    color:var(--gold);
+  }
+  .fine-print{ font-size:13px; color:#AEB7B1; margin-top:14px; line-height:1.5; }
+
+  /* ============================================================
+     CONTACT
+     ============================================================ */
+  .contact-grid{ display:grid; grid-template-columns:1.3fr .9fr; gap:44px; align-items:start; }
+  .contact-list{
+    border:var(--hair-strong);
+    border-radius:2px;
+  }
+  .contact-list .ci{
+    padding:18px 22px;
+    border-bottom:var(--hair);
+  }
+  .contact-list .ci:last-child{ border-bottom:none; }
+  .contact-list .ci .ci-label{
+    font-size:11px;
+    font-weight:700;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--brick);
+    font-variant:small-caps;
+    margin-bottom:4px;
+  }
+
+  /* ============================================================
+     FOOTER
+     ============================================================ */
+  .site-foot{
+    background:var(--ink-2);
+    color:#C9D0CB;
+    padding:52px 0 40px;
+    border-top:4px solid var(--gold);
+  }
+  .foot-grid{
+    display:flex;
+    justify-content:space-between;
+    gap:36px;
+    flex-wrap:wrap;
+    align-items:flex-start;
+  }
+  .foot-name{
+    font-family:var(--serif);
+    font-size:26px;
+    color:var(--paper);
+    letter-spacing:-.02em;
+  }
+  .foot-office{
+    font-size:11px;
+    letter-spacing:.16em;
+    text-transform:uppercase;
+    color:var(--gold);
+    font-weight:600;
+    margin-top:4px;
+  }
+  .foot-nav{ display:flex; flex-direction:column; gap:8px; }
+  .foot-nav button{
+    background:none;border:none;padding:0;text-align:left;
+    font-family:var(--sans);
+    font-size:14px;
+    font-weight:600;
+    letter-spacing:.06em;
+    text-transform:uppercase;
+    color:#C9D0CB;
+    cursor:pointer;
+  }
+  .foot-nav button:hover{ color:var(--gold); }
+  .foot-legal{
+    margin-top:36px;
+    padding-top:22px;
+    border-top:1px solid rgba(247,244,237,.16);
+    font-size:13px;
+    line-height:1.6;
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+  }
+  .foot-disclaimer{ color:#AEB7B1; max-width:70ch; }
+  .foot-credit{ color:#8B958E; }
+
+  /* ============================================================
+     PAGE SWITCHING
+     ============================================================ */
+  .page{ display:none; }
+  .page.active{ display:block; }
+
+  .mobile-nav{
+    display:none;
+    background:var(--ink);
+    border-bottom:2px solid var(--gold);
+  }
+  .mobile-nav.open{ display:block; }
+  .mobile-nav button{
+    display:block;
+    width:100%;
+    text-align:left;
+    background:none;
+    border:none;
+    border-bottom:1px solid rgba(247,244,237,.12);
+    color:var(--paper);
+    font-family:var(--sans);
+    font-size:15px;
+    font-weight:600;
+    letter-spacing:.08em;
+    text-transform:uppercase;
+    padding:15px 24px;
+    cursor:pointer;
+  }
+  .mobile-nav button.active{ color:var(--gold); }
+
+  /* ============================================================
+     RESPONSIVE
+     ============================================================ */
+  @media (max-width:900px){
+    .hero-grid{ grid-template-columns:1fr; gap:36px; }
+    .hero-portrait{ max-width:340px; }
+    .story-grid{ grid-template-columns:1fr; }
+    .give-grid,.contact-grid,.grid-2{ grid-template-columns:1fr; gap:32px; }
+    .grid-3{ grid-template-columns:1fr 1fr; }
+  }
+  @media (max-width:760px){
+    .nav{ display:none; }
+    .menu-btn{ display:inline-flex; }
+    .nav-cta{ display:none; }
+    .grid-3{ grid-template-columns:1fr; }
+    .record-row{ grid-template-columns:1fr; gap:8px; }
+    .event-row{ grid-template-columns:90px 1fr; gap:18px; }
+    .event-row .btn{ grid-column:1 / -1; justify-self:start; }
+    .field-row{ grid-template-columns:1fr; }
+    .amount-tiles{ grid-template-columns:1fr 1fr; }
+    .section{ padding:56px 0; }
+    .teaser{ flex-direction:column; align-items:flex-start; }
+  }
+  @media (max-width:400px){
+    body{ font-size:16px; }
+    .wrap{ padding:0 18px; }
+    .amount-tiles{ grid-template-columns:1fr 1fr; }
+    .family-photos{ grid-template-columns:1fr; }
+  }
+
+  @media (prefers-reduced-motion:reduce){
+    *{ scroll-behavior:auto !important; transition:none !important; animation:none !important; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===================== PROTOTYPE BANNER ===================== -->
+<div class="proto-banner" role="alert">
+  <strong>Layout Prototype</strong> — every word here is placeholder text for client review. Real copy is supplied later through the onboarding form.
+</div>
+
+<!-- ===================== HEADER / NAV ===================== -->
+<header class="site-head">
+  <div class="wrap head-inner">
+    <button class="brand" data-nav="home" aria-label="Justin Brown — go to Home">
+      <span class="b-name">Justin&nbsp;Brown</span>
+      <span class="b-office">Placeholder Office</span>
+    </button>
+
+    <nav class="nav" aria-label="Primary">
+      <button class="nav-link active" data-nav="home">Home</button>
+      <button class="nav-link" data-nav="about">About</button>
+      <button class="nav-link" data-nav="events">Events</button>
+      <button class="nav-link" data-nav="involved">Get Involved</button>
+      <button class="nav-link" data-nav="contact">Contact</button>
+      <button class="btn btn-primary btn-sm nav-cta" data-nav="involved">Donate</button>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
+  </div>
+  <nav class="mobile-nav" id="mobileNav" aria-label="Primary mobile">
+    <button class="active" data-nav="home">Home</button>
+    <button data-nav="about">About</button>
+    <button data-nav="events">Events</button>
+    <button data-nav="involved">Get Involved</button>
+    <button data-nav="contact">Contact</button>
+  </nav>
+</header>
+
+<main id="top">
+
+<!-- ============================================================
+     PAGE: HOME
+     ============================================================ -->
+<div class="page active" id="page-home">
+
+  <!-- A / HERO -->
+  <section class="hero sec">
+    <span class="tag"><b>A</b> / Hero</span>
+    <div class="wrap hero-grid">
+      <div class="hero-copy">
+        <div class="ballot-lockup">
+          <span class="ballot-mark" aria-hidden="true">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+              <path d="M4 12.5 L10 18.5 L20 5.5"/>
+            </svg>
+          </span>
+          <span class="ballot-office">Placeholder Office · Placeholder District</span>
+        </div>
+        <h1>Justin Brown</h1>
+        <p class="office-line ph">Candidate office line goes here — supplied by client</p>
+        <p class="hero-sent ph">This is one placeholder sentence describing the campaign in the candidate's own words, to be written by the client during onboarding.</p>
+        <div class="hero-btns">
+          <button class="btn btn-primary" data-nav="involved">Donate</button>
+          <button class="btn btn-secondary" data-nav="involved">Volunteer</button>
+        </div>
+      </div>
+      <div class="hero-portrait">
+        <div class="slot r-4x5">
+          <span class="slot-label">Candidate Portrait</span>
+          <span class="slot-ratio">Vertical · 4 : 5</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- B / PRIORITIES -->
+  <section class="section sec">
+    <span class="tag"><b>B</b> / Priorities</span>
+    <div class="wrap">
+      <span class="eyebrow">Priorities</span>
+      <div class="grid-3">
+        <div class="card priority-card">
+          <span class="p-num">Priority One</span>
+          <h3 class="ph">Priority headline</h3>
+          <p class="ph">Placeholder description of the first priority. The client supplies the real position statement during onboarding.</p>
+        </div>
+        <div class="card priority-card top-gold">
+          <span class="p-num">Priority Two</span>
+          <h3 class="ph">Priority headline</h3>
+          <p class="ph">Placeholder description of the second priority. The client supplies the real position statement during onboarding.</p>
+        </div>
+        <div class="card priority-card top-stone">
+          <span class="p-num">Priority Three</span>
+          <h3 class="ph">Priority headline</h3>
+          <p class="ph">Placeholder description of the third priority. The client supplies the real position statement during onboarding.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C / NEXT EVENT -->
+  <section class="section sec">
+    <span class="tag"><b>C</b> / Next Event</span>
+    <div class="wrap">
+      <span class="eyebrow">Next Event</span>
+      <div class="teaser">
+        <div>
+          <div class="t-date ph">Month 00 · 0:00 PM · Placeholder venue</div>
+          <h3 class="ph">Upcoming event name goes here</h3>
+          <p class="ph" style="margin:6px 0 0;">One-line placeholder description of the next event.</p>
+        </div>
+        <button class="btn btn-secondary" data-nav="events">See All Events</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- D / ACTION BAND -->
+  <section class="action-band on-dark sec">
+    <span class="tag"><b>D</b> / Action Band</span>
+    <div class="wrap">
+      <span class="eyebrow">Get Involved</span>
+      <h2 class="ph">Closing call-to-action headline goes here</h2>
+      <p class="ph" style="margin-top:14px;">Placeholder closing sentence encouraging visitors to take action. Real copy supplied by the client.</p>
+      <div class="hero-btns">
+        <button class="btn btn-gold" data-nav="involved">Donate</button>
+        <button class="btn btn-secondary" data-nav="involved">Volunteer</button>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PAGE: ABOUT
+     ============================================================ -->
+<div class="page" id="page-about">
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">About</span>
+      <h1>About Justin Brown</h1>
+    </div>
+  </header>
+
+  <!-- E / STORY -->
+  <section class="section sec">
+    <span class="tag"><b>E</b> / Story</span>
+    <div class="wrap story-grid">
+      <div class="ph-block">
+        <span class="eyebrow">His Story</span>
+        <p>Placeholder biography paragraph one. This block is reserved for the candidate's story, which the client writes during onboarding. No biographical facts are drafted here.</p>
+        <p>Placeholder biography paragraph two continues the story. Everything a visitor reads on this page is placeholder text until the client supplies the real copy.</p>
+      </div>
+      <div class="slot r-4x5">
+        <span class="slot-label">Candidate Portrait</span>
+        <span class="slot-ratio">Vertical · 4 : 5</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- F / FAMILY -->
+  <section class="section sec">
+    <span class="tag"><b>F</b> / Family</span>
+    <div class="wrap">
+      <span class="eyebrow">Family</span>
+      <div class="ph-block" style="max-width:70ch;">
+        <p>Placeholder family paragraph. <span class="ph" style="text-decoration:underline dotted var(--brick);color:var(--brick);">Note to client: decide how much of your family is made public here, and be especially deliberate about whether and how children are shown or named.</span> Nothing is drafted until you supply it.</p>
+      </div>
+      <div class="family-photos">
+        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
+        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
+        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- G / THE RECORD -->
+  <section class="section sec" style="background:var(--paper-2);">
+    <span class="tag"><b>G</b> / The Record</span>
+    <div class="wrap">
+      <span class="eyebrow">The Record</span>
+      <h2 style="font-size:clamp(30px,4.5vw,44px);margin-bottom:8px;">A Record of Service</h2>
+      <p class="ph" style="max-width:56ch;margin-bottom:20px;">Placeholder introduction to the record. The dated entries below are structural placeholders; the client supplies each year and description.</p>
+      <div class="record">
+        <div class="record-row">
+          <div class="record-year">0000</div>
+          <div class="record-entry ph-block">
+            <h3 class="ph">Record entry headline</h3>
+            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          </div>
+        </div>
+        <div class="record-row">
+          <div class="record-year">0000</div>
+          <div class="record-entry ph-block">
+            <h3 class="ph">Record entry headline</h3>
+            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          </div>
+        </div>
+        <div class="record-row">
+          <div class="record-year">0000</div>
+          <div class="record-entry ph-block">
+            <h3 class="ph">Record entry headline</h3>
+            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          </div>
+        </div>
+        <div class="record-row">
+          <div class="record-year">0000</div>
+          <div class="record-entry ph-block">
+            <h3 class="ph">Record entry headline</h3>
+            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PAGE: EVENTS
+     ============================================================ -->
+<div class="page" id="page-events">
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Events</span>
+      <h1>Events &amp; Appearances</h1>
+    </div>
+  </header>
+
+  <!-- H / UPCOMING -->
+  <section class="section sec">
+    <span class="tag"><b>H</b> / Upcoming</span>
+    <div class="wrap">
+      <span class="eyebrow">Upcoming</span>
+      <div class="events-list">
+        <div class="event-row">
+          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
+          <div class="event-mid">
+            <h3 class="ph">Event name goes here</h3>
+            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
+          </div>
+          <button class="btn btn-primary btn-sm">RSVP</button>
+        </div>
+        <div class="event-row">
+          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
+          <div class="event-mid">
+            <h3 class="ph">Event name goes here</h3>
+            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
+          </div>
+          <button class="btn btn-primary btn-sm">RSVP</button>
+        </div>
+        <div class="event-row">
+          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
+          <div class="event-mid">
+            <h3 class="ph">Event name goes here</h3>
+            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
+          </div>
+          <button class="btn btn-primary btn-sm">RSVP</button>
+        </div>
+        <div class="event-row">
+          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
+          <div class="event-mid">
+            <h3 class="ph">Event name goes here</h3>
+            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
+          </div>
+          <button class="btn btn-primary btn-sm">RSVP</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- I / APPEARANCE REQUEST -->
+  <section class="section sec" style="background:var(--paper-2);">
+    <span class="tag"><b>I</b> / Request</span>
+    <div class="wrap grid-2">
+      <div>
+        <span class="eyebrow">Invite Justin</span>
+        <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:12px;">Request an Appearance</h2>
+        <p class="ph" style="max-width:46ch;">Placeholder text inviting organizations to request an appearance. The client supplies the real language during onboarding.</p>
+      </div>
+      <form class="form-card" onsubmit="return false;" aria-label="Appearance request form">
+        <div class="field-row">
+          <div class="form-field">
+            <label for="ap-org">Organization</label>
+            <input type="text" id="ap-org" name="org" placeholder="Placeholder">
+          </div>
+          <div class="form-field">
+            <label for="ap-name">Contact Name</label>
+            <input type="text" id="ap-name" name="name" placeholder="Placeholder">
+          </div>
+        </div>
+        <div class="field-row">
+          <div class="form-field">
+            <label for="ap-email">Email</label>
+            <input type="email" id="ap-email" name="email" placeholder="placeholder@example.com">
+          </div>
+          <div class="form-field">
+            <label for="ap-date">Requested Date</label>
+            <input type="text" id="ap-date" name="date" placeholder="Placeholder">
+          </div>
+        </div>
+        <div class="form-field">
+          <label for="ap-details">Event Details</label>
+          <textarea id="ap-details" name="details" placeholder="Placeholder"></textarea>
+        </div>
+        <button type="submit" class="btn btn-primary btn-block">Send Request</button>
+      </form>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PAGE: GET INVOLVED
+     ============================================================ -->
+<div class="page" id="page-involved">
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Get Involved</span>
+      <h1>Get Involved</h1>
+    </div>
+  </header>
+
+  <!-- J / DONATE  +  K / VOLUNTEER on dark -->
+  <section class="section give-band on-dark sec" style="padding-top:88px;">
+    <span class="tag"><b>J</b> / Donate</span>
+    <div class="wrap give-grid">
+      <!-- Donate -->
+      <div class="give-col">
+        <span class="eyebrow">Donate</span>
+        <h2>Contribute</h2>
+        <p class="ph">Placeholder line about contributing to the campaign.</p>
+        <div class="amount-tiles" role="group" aria-label="Suggested contribution amounts">
+          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
+          <button type="button" class="amount-tile" aria-pressed="true">$00</button>
+          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
+          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
+        </div>
+        <button class="btn btn-gold btn-block">Continue to Give</button>
+        <p class="fine-print">Contributions are processed on a compliant platform. Required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
+      </div>
+
+      <!-- K / Volunteer -->
+      <div class="give-col sec" style="position:relative;">
+        <span class="tag"><b>K</b> / Volunteer</span>
+        <span class="eyebrow">Volunteer</span>
+        <h2>Lend a Hand</h2>
+        <p class="ph">Placeholder line inviting supporters to volunteer.</p>
+        <form onsubmit="return false;" aria-label="Volunteer sign-up form" style="margin-top:16px;">
+          <div class="form-field">
+            <label for="v-name">Name</label>
+            <input type="text" id="v-name" name="name" placeholder="Placeholder">
+          </div>
+          <div class="field-row">
+            <div class="form-field">
+              <label for="v-email">Email</label>
+              <input type="email" id="v-email" name="email" placeholder="placeholder@example.com">
+            </div>
+            <div class="form-field">
+              <label for="v-zip">ZIP Code</label>
+              <input type="text" id="v-zip" name="zip" inputmode="numeric" placeholder="00000">
+            </div>
+          </div>
+          <div class="form-field">
+            <label id="v-interest-label">Interests</label>
+            <div class="chips" role="group" aria-labelledby="v-interest-label">
+              <button type="button" class="chip" aria-pressed="false">Knock Doors</button>
+              <button type="button" class="chip" aria-pressed="false">Make Calls</button>
+              <button type="button" class="chip" aria-pressed="false">Host an Event</button>
+              <button type="button" class="chip" aria-pressed="false">Yard Sign</button>
+            </div>
+          </div>
+          <button type="submit" class="btn btn-secondary btn-block">Sign Me Up</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- L / MORE WAYS -->
+  <section class="section sec">
+    <span class="tag"><b>L</b> / More Ways</span>
+    <div class="wrap">
+      <span class="eyebrow">More Ways to Help</span>
+      <div class="grid-3">
+        <div class="card">
+          <h3 class="ph">Way to help</h3>
+          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+        </div>
+        <div class="card top-gold">
+          <h3 class="ph">Way to help</h3>
+          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+        </div>
+        <div class="card top-stone">
+          <h3 class="ph">Way to help</h3>
+          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+<!-- ============================================================
+     PAGE: CONTACT
+     ============================================================ -->
+<div class="page" id="page-contact">
+  <header class="page-header">
+    <div class="wrap">
+      <span class="eyebrow">Contact</span>
+      <h1>Contact the Campaign</h1>
+    </div>
+  </header>
+
+  <section class="section sec">
+    <div class="wrap contact-grid">
+      <!-- M / MESSAGE -->
+      <div class="sec" style="position:relative;">
+        <span class="tag"><b>M</b> / Message</span>
+        <span class="eyebrow">Send a Message</span>
+        <form class="form-card" onsubmit="return false;" aria-label="Contact message form" style="border-top-color:var(--brick);">
+          <div class="field-row">
+            <div class="form-field">
+              <label for="c-name">Name</label>
+              <input type="text" id="c-name" name="name" placeholder="Placeholder">
+            </div>
+            <div class="form-field">
+              <label for="c-email">Email</label>
+              <input type="email" id="c-email" name="email" placeholder="placeholder@example.com">
+            </div>
+          </div>
+          <div class="form-field">
+            <label for="c-subject">Subject</label>
+            <select id="c-subject" name="subject">
+              <option>Placeholder — General</option>
+              <option>Placeholder — Media</option>
+              <option>Placeholder — Volunteer</option>
+              <option>Placeholder — Events</option>
+            </select>
+          </div>
+          <div class="form-field">
+            <label for="c-message">Message</label>
+            <textarea id="c-message" name="message" placeholder="Placeholder"></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary btn-block">Send Message</button>
+        </form>
+      </div>
+
+      <!-- N / DETAILS -->
+      <div class="sec" style="position:relative;">
+        <span class="tag"><b>N</b> / Details</span>
+        <span class="eyebrow">Direct Contact</span>
+        <div class="contact-list">
+          <div class="ci">
+            <div class="ci-label">Email</div>
+            <div class="ph">placeholder@example.com</div>
+          </div>
+          <div class="ci">
+            <div class="ci-label">Phone</div>
+            <div class="ph">(000) 000-0000</div>
+          </div>
+          <div class="ci">
+            <div class="ci-label">Mailing Address</div>
+            <div class="ph">Placeholder address line, City, ST 00000</div>
+          </div>
+          <div class="ci">
+            <div class="ci-label">Press Inquiries</div>
+            <div class="ph">placeholder-press@example.com</div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>
+
+</main>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <div class="foot-name">Justin Brown</div>
+        <div class="foot-office">Placeholder Office</div>
+      </div>
+      <nav class="foot-nav" aria-label="Footer">
+        <button data-nav="home">Home</button>
+        <button data-nav="about">About</button>
+        <button data-nav="events">Events</button>
+        <button data-nav="involved">Get Involved</button>
+        <button data-nav="contact">Contact</button>
+      </nav>
+    </div>
+    <div class="foot-legal">
+      <div class="foot-disclaimer ph">Required political advertising disclosure goes here — supplied by the treasurer or attorney and confirmed before launch.</div>
+      <div class="foot-credit">Site by Murchison Consulting Group, LLC.</div>
+    </div>
+  </div>
+</footer>
+
+<script>
+(function(){
+  "use strict";
+  var pages = {
+    home:'page-home', about:'page-about', events:'page-events',
+    involved:'page-involved', contact:'page-contact'
+  };
+  var prefersReduced = window.matchMedia &&
+    window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  function showPage(key){
+    if(!pages[key]) key = 'home';
+    // toggle page containers
+    Object.keys(pages).forEach(function(k){
+      var el = document.getElementById(pages[k]);
+      if(el) el.classList.toggle('active', k === key);
+    });
+    // active nav state (desktop + mobile + footer)
+    document.querySelectorAll('[data-nav]').forEach(function(btn){
+      if(btn.classList.contains('nav-link') ||
+         btn.closest('.mobile-nav')){
+        btn.classList.toggle('active', btn.getAttribute('data-nav') === key);
+      }
+    });
+    // close mobile menu
+    closeMenu();
+    // scroll to top
+    window.scrollTo(prefersReduced ? {top:0} : {top:0, behavior:'auto'});
+  }
+
+  // delegate all nav clicks
+  document.addEventListener('click', function(e){
+    var t = e.target.closest('[data-nav]');
+    if(!t) return;
+    e.preventDefault();
+    showPage(t.getAttribute('data-nav'));
+  });
+
+  // mobile menu toggle
+  var menuBtn = document.getElementById('menuBtn');
+  var mobileNav = document.getElementById('mobileNav');
+  function closeMenu(){
+    if(mobileNav) mobileNav.classList.remove('open');
+    if(menuBtn) menuBtn.setAttribute('aria-expanded','false');
+  }
+  if(menuBtn){
+    menuBtn.addEventListener('click', function(){
+      var open = mobileNav.classList.toggle('open');
+      menuBtn.setAttribute('aria-expanded', open ? 'true' : 'false');
+    });
+  }
+
+  // amount tiles: single-select
+  var tiles = document.querySelectorAll('.amount-tile');
+  tiles.forEach(function(tile){
+    tile.addEventListener('click', function(){
+      tiles.forEach(function(t){ t.setAttribute('aria-pressed','false'); });
+      tile.setAttribute('aria-pressed','true');
+    });
+  });
+
+  // interest chips: multi-select toggle
+  document.querySelectorAll('.chip').forEach(function(chip){
+    chip.addEventListener('click', function(){
+      var on = chip.getAttribute('aria-pressed') === 'true';
+      chip.setAttribute('aria-pressed', on ? 'false' : 'true');
+    });
+  });
+})();
+</script>
+</body>
+</html>
