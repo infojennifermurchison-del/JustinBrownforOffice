@@ -12,19 +12,19 @@
      PALETTE + TYPE TOKENS
      ============================================================ */
   :root{
-    --ink:#131E29;
-    --ink-2:#1D2B38;
-    --paper:#F7F4ED;
-    --paper-2:#EBE5D9;
-    --brick:#A8402C;
-    --gold:#D9A441;
-    --stone:#6F7A72;
+    --ink:#14181B;
+    --ink-2:#232A2E;
+    --paper:#F0EDE6;
+    --paper-2:#DFDACE;
+    --brick:#B4381E;
+    --gold:#C7871E;
+    --stone:#59636A;
 
     --serif:'Newsreader', Georgia, 'Times New Roman', serif;
     --sans:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
-    --hair:1px solid rgba(19,30,41,.16);
-    --hair-strong:1px solid rgba(19,30,41,.30);
+    --hair:1px solid rgba(20,24,27,.18);
+    --hair-strong:1px solid rgba(20,24,27,.34);
     --maxw:1120px;
   }
 
@@ -71,23 +71,23 @@
   /* Inline placeholder copy: muted stone + dotted underline */
   .ph{
     color:var(--stone);
-    text-decoration:underline dotted rgba(111,122,114,.7);
+    text-decoration:underline dotted rgba(89,99,106,.75);
     text-underline-offset:3px;
   }
   .ph-block{
     color:var(--stone);
   }
   .ph-block p{
-    text-decoration:underline dotted rgba(111,122,114,.55);
+    text-decoration:underline dotted rgba(89,99,106,.6);
     text-underline-offset:3px;
   }
 
   /* On dark surfaces the muted color needs to lift */
   .on-dark .ph, .on-dark .ph-block{
-    color:#B9C2BC;
-    text-decoration-color:rgba(185,194,188,.6);
+    color:#AEB8BF;
+    text-decoration-color:rgba(174,184,191,.6);
   }
-  .on-dark .ph-block p{ text-decoration-color:rgba(185,194,188,.45); }
+  .on-dark .ph-block p{ text-decoration-color:rgba(174,184,191,.45); }
 
   /* Image slots: dashed outline boxes */
   .slot{
@@ -95,8 +95,8 @@
     border-radius:2px;
     background:
       repeating-linear-gradient(135deg,
-        rgba(111,122,114,.05) 0 10px,
-        rgba(111,122,114,0) 10px 20px);
+        rgba(89,99,106,.06) 0 10px,
+        rgba(89,99,106,0) 10px 20px);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -119,8 +119,8 @@
     letter-spacing:0;
   }
   .on-dark .slot{
-    border-color:#8B958E;
-    color:#B9C2BC;
+    border-color:#7C868D;
+    color:#AEB8BF;
   }
 
   .r-4x5{aspect-ratio:4/5;}
@@ -159,8 +159,8 @@
   }
   .on-dark .tag{
     background:var(--ink);
-    border-color:#5c6a63;
-    color:#B9C2BC;
+    border-color:#4E585F;
+    color:#AEB8BF;
   }
   .on-dark .tag b{color:var(--gold);}
 
@@ -288,11 +288,11 @@
     transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .btn-primary{ background:var(--brick); color:var(--paper); border-color:var(--brick); }
-  .btn-primary:hover{ background:#8f3423; color:var(--paper); }
+  .btn-primary:hover{ background:#8f2a15; color:var(--paper); }
   .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
   .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
   .btn-gold{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
-  .btn-gold:hover{ background:#c4902f; }
+  .btn-gold:hover{ background:#a86f14; }
   .on-dark .btn-secondary{ color:var(--paper); border-color:var(--paper); }
   .on-dark .btn-secondary:hover{ background:var(--paper); color:var(--ink); }
   .btn-sm{ padding:9px 16px; font-size:12px; }
@@ -444,7 +444,7 @@
   }
   .action-band .wrap{ padding-top:64px; padding-bottom:64px; }
   .action-band h2{ font-size:clamp(30px,4.5vw,46px); color:var(--paper); }
-  .action-band p{ color:#C9D0CB; max-width:52ch; }
+  .action-band p{ color:#C1CAD0; max-width:52ch; }
   .action-band .hero-btns{ margin-top:26px; }
 
   /* ============================================================
@@ -582,7 +582,7 @@
     color:var(--paper);
     border-color:var(--ink);
   }
-  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(247,244,237,.4); }
+  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(240,237,230,.4); }
   .on-dark .chip[aria-pressed="true"]{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
 
   /* ============================================================
@@ -603,7 +603,7 @@
     font-size:26px;
     text-align:center;
     padding:20px 6px;
-    border:2px solid rgba(247,244,237,.35);
+    border:2px solid rgba(240,237,230,.35);
     border-radius:2px;
     background:transparent;
     color:var(--paper);
@@ -612,10 +612,10 @@
   }
   .amount-tile[aria-pressed="true"]{
     border-color:var(--gold);
-    background:rgba(217,164,65,.14);
+    background:rgba(199,135,30,.16);
     color:var(--gold);
   }
-  .fine-print{ font-size:13px; color:#AEB7B1; margin-top:14px; line-height:1.5; }
+  .fine-print{ font-size:13px; color:#A5AFB6; margin-top:14px; line-height:1.5; }
 
   /* ============================================================
      CONTACT
@@ -645,7 +645,7 @@
      ============================================================ */
   .site-foot{
     background:var(--ink-2);
-    color:#C9D0CB;
+    color:#C1CAD0;
     padding:52px 0 40px;
     border-top:4px solid var(--gold);
   }
@@ -678,22 +678,22 @@
     font-weight:600;
     letter-spacing:.06em;
     text-transform:uppercase;
-    color:#C9D0CB;
+    color:#C1CAD0;
     cursor:pointer;
   }
   .foot-nav button:hover{ color:var(--gold); }
   .foot-legal{
     margin-top:36px;
     padding-top:22px;
-    border-top:1px solid rgba(247,244,237,.16);
+    border-top:1px solid rgba(240,237,230,.16);
     font-size:13px;
     line-height:1.6;
     display:flex;
     flex-direction:column;
     gap:10px;
   }
-  .foot-disclaimer{ color:#AEB7B1; max-width:70ch; }
-  .foot-credit{ color:#8B958E; }
+  .foot-disclaimer{ color:#A5AFB6; max-width:70ch; }
+  .foot-credit{ color:#7C868D; }
 
   /* ============================================================
      PAGE SWITCHING
@@ -713,7 +713,7 @@
     text-align:left;
     background:none;
     border:none;
-    border-bottom:1px solid rgba(247,244,237,.12);
+    border-bottom:1px solid rgba(240,237,230,.12);
     color:var(--paper);
     font-family:var(--sans);
     font-size:15px;
@@ -809,7 +809,7 @@
       <div class="hero-copy">
         <div class="ballot-lockup">
           <span class="ballot-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#D9A441" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#C7871E" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
               <path d="M4 12.5 L10 18.5 L20 5.5"/>
             </svg>
           </span>
