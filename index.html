@@ -12,19 +12,20 @@
      PALETTE + TYPE TOKENS
      ============================================================ */
   :root{
-    --ink:#14181B;
-    --ink-2:#232A2E;
-    --paper:#F0EDE6;
-    --paper-2:#DFDACE;
-    --brick:#B4381E;
-    --gold:#C7871E;
-    --stone:#59636A;
+    --ink:#152449;        /* navy */
+    --ink-2:#1C2E58;      /* navy, lifted */
+    --paper:#FAFAF8;      /* white */
+    --paper-2:#ECEEF3;    /* cool light gray */
+    --brick:#B31F2C;      /* red (primary accent) */
+    --red-bright:#E23A47; /* red, brightened for reading on navy */
+    --gold:#B31F2C;       /* legacy token kept = red; specific dark-surface uses overridden below */
+    --stone:#5C6B85;      /* slate blue-gray (muted) */
 
     --serif:'Newsreader', Georgia, 'Times New Roman', serif;
     --sans:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
-    --hair:1px solid rgba(20,24,27,.18);
-    --hair-strong:1px solid rgba(20,24,27,.34);
+    --hair:1px solid rgba(21,36,73,.18);
+    --hair-strong:1px solid rgba(21,36,73,.32);
     --maxw:1120px;
   }
 
@@ -54,12 +55,12 @@
 
   /* Focus visibility */
   :focus-visible{
-    outline:3px solid var(--gold);
+    outline:3px solid var(--red-bright);
     outline-offset:2px;
   }
   a:focus-visible, button:focus-visible, input:focus-visible,
   textarea:focus-visible, select:focus-visible, .chip:focus-visible{
-    outline:3px solid var(--gold);
+    outline:3px solid var(--red-bright);
     outline-offset:2px;
   }
 
@@ -71,23 +72,23 @@
   /* Inline placeholder copy: muted stone + dotted underline */
   .ph{
     color:var(--stone);
-    text-decoration:underline dotted rgba(89,99,106,.75);
+    text-decoration:underline dotted rgba(92,107,133,.75);
     text-underline-offset:3px;
   }
   .ph-block{
     color:var(--stone);
   }
   .ph-block p{
-    text-decoration:underline dotted rgba(89,99,106,.6);
+    text-decoration:underline dotted rgba(92,107,133,.6);
     text-underline-offset:3px;
   }
 
   /* On dark surfaces the muted color needs to lift */
   .on-dark .ph, .on-dark .ph-block{
-    color:#AEB8BF;
-    text-decoration-color:rgba(174,184,191,.6);
+    color:#AAB4CC;
+    text-decoration-color:rgba(170,180,204,.6);
   }
-  .on-dark .ph-block p{ text-decoration-color:rgba(174,184,191,.45); }
+  .on-dark .ph-block p{ text-decoration-color:rgba(170,180,204,.45); }
 
   /* Image slots: dashed outline boxes */
   .slot{
@@ -95,8 +96,8 @@
     border-radius:2px;
     background:
       repeating-linear-gradient(135deg,
-        rgba(89,99,106,.06) 0 10px,
-        rgba(89,99,106,0) 10px 20px);
+        rgba(92,107,133,.06) 0 10px,
+        rgba(92,107,133,0) 10px 20px);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -119,8 +120,8 @@
     letter-spacing:0;
   }
   .on-dark .slot{
-    border-color:#7C868D;
-    color:#AEB8BF;
+    border-color:#7B84A0;
+    color:#AAB4CC;
   }
 
   .r-4x5{aspect-ratio:4/5;}
@@ -159,17 +160,17 @@
   }
   .on-dark .tag{
     background:var(--ink);
-    border-color:#4E585F;
-    color:#AEB8BF;
+    border-color:#3C4A70;
+    color:#AAB4CC;
   }
-  .on-dark .tag b{color:var(--gold);}
+  .on-dark .tag b{color:var(--red-bright);}
 
   /* ============================================================
      PROTOTYPE BANNER
      ============================================================ */
   .proto-banner{
-    background:var(--gold);
-    color:var(--ink);
+    background:var(--brick);
+    color:#fff;
     text-align:center;
     padding:8px 16px;
     font-size:13px;
@@ -288,11 +289,9 @@
     transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .btn-primary{ background:var(--brick); color:var(--paper); border-color:var(--brick); }
-  .btn-primary:hover{ background:#8f2a15; color:var(--paper); }
+  .btn-primary:hover{ background:#8E1622; color:var(--paper); }
   .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
   .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
-  .btn-gold{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
-  .btn-gold:hover{ background:#a86f14; }
   .on-dark .btn-secondary{ color:var(--paper); border-color:var(--paper); }
   .on-dark .btn-secondary:hover{ background:var(--paper); color:var(--ink); }
   .btn-sm{ padding:9px 16px; font-size:12px; }
@@ -312,7 +311,7 @@
     display:block;
     margin-bottom:12px;
   }
-  .on-dark .eyebrow{ color:var(--gold); }
+  .on-dark .eyebrow{ color:var(--red-bright); }
 
   .section{ padding:72px 0; border-top:var(--hair); }
   .section:first-of-type{ border-top:none; }
@@ -338,7 +337,7 @@
     padding:26px 24px;
   }
   .card h3{ font-size:23px; margin-bottom:10px; }
-  .card.top-gold{ border-top-color:var(--gold); }
+  .card.top-gold{ border-top-color:var(--ink); }
   .card.top-stone{ border-top-color:var(--stone); }
   .card.top-ink{ border-top-color:var(--ink); }
 
@@ -582,8 +581,8 @@
     color:var(--paper);
     border-color:var(--ink);
   }
-  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(240,237,230,.4); }
-  .on-dark .chip[aria-pressed="true"]{ background:var(--gold); color:var(--ink); border-color:var(--gold); }
+  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(250,250,248,.4); }
+  .on-dark .chip[aria-pressed="true"]{ background:var(--brick); color:#fff; border-color:var(--brick); }
 
   /* ============================================================
      GET INVOLVED
@@ -603,7 +602,7 @@
     font-size:26px;
     text-align:center;
     padding:20px 6px;
-    border:2px solid rgba(240,237,230,.35);
+    border:2px solid rgba(250,250,248,.35);
     border-radius:2px;
     background:transparent;
     color:var(--paper);
@@ -611,11 +610,11 @@
     letter-spacing:-.02em;
   }
   .amount-tile[aria-pressed="true"]{
-    border-color:var(--gold);
-    background:rgba(199,135,30,.16);
-    color:var(--gold);
+    border-color:var(--red-bright);
+    background:rgba(226,58,71,.16);
+    color:var(--red-bright);
   }
-  .fine-print{ font-size:13px; color:#A5AFB6; margin-top:14px; line-height:1.5; }
+  .fine-print{ font-size:13px; color:#A0A9C2; margin-top:14px; line-height:1.5; }
 
   /* ============================================================
      CONTACT
@@ -666,7 +665,7 @@
     font-size:11px;
     letter-spacing:.16em;
     text-transform:uppercase;
-    color:var(--gold);
+    color:var(--red-bright);
     font-weight:600;
     margin-top:4px;
   }
@@ -681,19 +680,19 @@
     color:#C1CAD0;
     cursor:pointer;
   }
-  .foot-nav button:hover{ color:var(--gold); }
+  .foot-nav button:hover{ color:#fff; }
   .foot-legal{
     margin-top:36px;
     padding-top:22px;
-    border-top:1px solid rgba(240,237,230,.16);
+    border-top:1px solid rgba(250,250,248,.16);
     font-size:13px;
     line-height:1.6;
     display:flex;
     flex-direction:column;
     gap:10px;
   }
-  .foot-disclaimer{ color:#A5AFB6; max-width:70ch; }
-  .foot-credit{ color:#7C868D; }
+  .foot-disclaimer{ color:#A0A9C2; max-width:70ch; }
+  .foot-credit{ color:#7B84A0; }
 
   /* ============================================================
      PAGE SWITCHING
@@ -713,7 +712,7 @@
     text-align:left;
     background:none;
     border:none;
-    border-bottom:1px solid rgba(240,237,230,.12);
+    border-bottom:1px solid rgba(250,250,248,.12);
     color:var(--paper);
     font-family:var(--sans);
     font-size:15px;
@@ -723,7 +722,7 @@
     padding:15px 24px;
     cursor:pointer;
   }
-  .mobile-nav button.active{ color:var(--gold); }
+  .mobile-nav button.active{ color:var(--red-bright); }
 
   /* ============================================================
      RESPONSIVE
@@ -809,7 +808,7 @@
       <div class="hero-copy">
         <div class="ballot-lockup">
           <span class="ballot-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#C7871E" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#B31F2C" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
               <path d="M4 12.5 L10 18.5 L20 5.5"/>
             </svg>
           </span>
@@ -881,7 +880,7 @@
       <h2 class="ph">Closing call-to-action headline goes here</h2>
       <p class="ph" style="margin-top:14px;">Placeholder closing sentence encouraging visitors to take action. Real copy supplied by the client.</p>
       <div class="hero-btns">
-        <button class="btn btn-gold" data-nav="involved">Donate</button>
+        <button class="btn btn-primary" data-nav="involved">Donate</button>
         <button class="btn btn-secondary" data-nav="involved">Volunteer</button>
       </div>
     </div>
@@ -1091,7 +1090,7 @@
           <button type="button" class="amount-tile" aria-pressed="false">$00</button>
           <button type="button" class="amount-tile" aria-pressed="false">$00</button>
         </div>
-        <button class="btn btn-gold btn-block">Continue to Give</button>
+        <button class="btn btn-primary btn-block">Continue to Give</button>
         <p class="fine-print">Contributions are processed on a compliant platform. Required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
       </div>
 
