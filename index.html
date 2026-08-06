@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Justin Brown — Layout Prototype</title>
+<title>Justin Randall Brown — Layout Prototype</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -12,20 +12,20 @@
      PALETTE + TYPE TOKENS
      ============================================================ */
   :root{
-    --ink:#152449;        /* navy */
-    --ink-2:#1C2E58;      /* navy, lifted */
-    --paper:#FAFAF8;      /* white */
-    --paper-2:#ECEEF3;    /* cool light gray */
-    --brick:#B31F2C;      /* red (primary accent) */
-    --red-bright:#E23A47; /* red, brightened for reading on navy */
-    --gold:#B31F2C;       /* legacy token kept = red; specific dark-surface uses overridden below */
-    --stone:#5C6B85;      /* slate blue-gray (muted) */
+    --ink:#121319;        /* black */
+    --ink-2:#1C1E27;      /* black, lifted (footer) */
+    --paper:#FBFBFC;      /* white */
+    --paper-2:#EDEFF6;    /* very light cool blue-gray */
+    --brick:#1E40C6;      /* royal blue (primary accent) */
+    --red-bright:#5C82FF; /* royal blue, brightened for reading on black */
+    --gold:#1E40C6;       /* legacy token kept = royal blue; dark-surface uses overridden below */
+    --stone:#6A7180;      /* neutral cool gray (muted) */
 
     --serif:'Newsreader', Georgia, 'Times New Roman', serif;
     --sans:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
 
-    --hair:1px solid rgba(21,36,73,.18);
-    --hair-strong:1px solid rgba(21,36,73,.32);
+    --hair:1px solid rgba(18,19,25,.16);
+    --hair-strong:1px solid rgba(18,19,25,.30);
     --maxw:1120px;
   }
 
@@ -72,14 +72,14 @@
   /* Inline placeholder copy: muted stone + dotted underline */
   .ph{
     color:var(--stone);
-    text-decoration:underline dotted rgba(92,107,133,.75);
+    text-decoration:underline dotted rgba(106,113,128,.75);
     text-underline-offset:3px;
   }
   .ph-block{
     color:var(--stone);
   }
   .ph-block p{
-    text-decoration:underline dotted rgba(92,107,133,.6);
+    text-decoration:underline dotted rgba(106,113,128,.6);
     text-underline-offset:3px;
   }
 
@@ -96,8 +96,8 @@
     border-radius:2px;
     background:
       repeating-linear-gradient(135deg,
-        rgba(92,107,133,.06) 0 10px,
-        rgba(92,107,133,0) 10px 20px);
+        rgba(106,113,128,.06) 0 10px,
+        rgba(106,113,128,0) 10px 20px);
     display:flex;
     flex-direction:column;
     align-items:center;
@@ -160,7 +160,7 @@
   }
   .on-dark .tag{
     background:var(--ink);
-    border-color:#3C4A70;
+    border-color:#33384A;
     color:#AAB4CC;
   }
   .on-dark .tag b{color:var(--red-bright);}
@@ -169,14 +169,14 @@
      PROTOTYPE BANNER
      ============================================================ */
   .proto-banner{
-    background:var(--brick);
+    background:var(--ink);
     color:#fff;
     text-align:center;
     padding:8px 16px;
     font-size:13px;
     font-weight:600;
     letter-spacing:.04em;
-    border-bottom:2px solid var(--ink);
+    border-bottom:3px solid var(--brick);
     position:sticky;
     top:0;
     z-index:60;
@@ -289,12 +289,13 @@
     transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .btn-primary{ background:var(--brick); color:var(--paper); border-color:var(--brick); }
-  .btn-primary:hover{ background:#8E1622; color:var(--paper); }
+  .btn-primary:hover{ background:#17329E; color:var(--paper); }
   .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
   .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
   .on-dark .btn-secondary{ color:var(--paper); border-color:var(--paper); }
   .on-dark .btn-secondary:hover{ background:var(--paper); color:var(--ink); }
   .btn-sm{ padding:9px 16px; font-size:12px; }
+  .btn-lg{ padding:17px 34px; font-size:16px; letter-spacing:.07em; }
   .btn-block{ width:100%; }
 
   /* ============================================================
@@ -581,7 +582,7 @@
     color:var(--paper);
     border-color:var(--ink);
   }
-  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(250,250,248,.4); }
+  .on-dark .chip{ background:transparent; color:var(--paper); border-color:rgba(251,251,252,.4); }
   .on-dark .chip[aria-pressed="true"]{ background:var(--brick); color:#fff; border-color:var(--brick); }
 
   /* ============================================================
@@ -602,7 +603,7 @@
     font-size:26px;
     text-align:center;
     padding:20px 6px;
-    border:2px solid rgba(250,250,248,.35);
+    border:2px solid rgba(251,251,252,.35);
     border-radius:2px;
     background:transparent;
     color:var(--paper);
@@ -611,7 +612,7 @@
   }
   .amount-tile[aria-pressed="true"]{
     border-color:var(--red-bright);
-    background:rgba(226,58,71,.16);
+    background:rgba(92,130,255,.18);
     color:var(--red-bright);
   }
   .fine-print{ font-size:13px; color:#A0A9C2; margin-top:14px; line-height:1.5; }
@@ -684,7 +685,7 @@
   .foot-legal{
     margin-top:36px;
     padding-top:22px;
-    border-top:1px solid rgba(250,250,248,.16);
+    border-top:1px solid rgba(251,251,252,.16);
     font-size:13px;
     line-height:1.6;
     display:flex;
@@ -712,7 +713,7 @@
     text-align:left;
     background:none;
     border:none;
-    border-bottom:1px solid rgba(250,250,248,.12);
+    border-bottom:1px solid rgba(251,251,252,.12);
     color:var(--paper);
     font-family:var(--sans);
     font-size:15px;
@@ -769,8 +770,8 @@
 <!-- ===================== HEADER / NAV ===================== -->
 <header class="site-head">
   <div class="wrap head-inner">
-    <button class="brand" data-nav="home" aria-label="Justin Brown — go to Home">
-      <span class="b-name">Justin&nbsp;Brown</span>
+    <button class="brand" data-nav="home" aria-label="Justin Randall Brown — go to Home">
+      <span class="b-name">Justin&nbsp;Randall&nbsp;Brown</span>
       <span class="b-office">Placeholder Office</span>
     </button>
 
@@ -780,7 +781,7 @@
       <button class="nav-link" data-nav="events">Events</button>
       <button class="nav-link" data-nav="involved">Get Involved</button>
       <button class="nav-link" data-nav="contact">Contact</button>
-      <button class="btn btn-primary btn-sm nav-cta" data-nav="involved">Donate</button>
+      <button class="btn btn-primary nav-cta" data-nav="involved">Donate</button>
     </nav>
 
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
@@ -808,18 +809,18 @@
       <div class="hero-copy">
         <div class="ballot-lockup">
           <span class="ballot-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#B31F2C" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#1E40C6" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
               <path d="M4 12.5 L10 18.5 L20 5.5"/>
             </svg>
           </span>
           <span class="ballot-office">Placeholder Office · Placeholder District</span>
         </div>
-        <h1>Justin Brown</h1>
+        <h1>Justin Randall Brown</h1>
         <p class="office-line ph">Candidate office line goes here — supplied by client</p>
         <p class="hero-sent ph">This is one placeholder sentence describing the campaign in the candidate's own words, to be written by the client during onboarding.</p>
         <div class="hero-btns">
-          <button class="btn btn-primary" data-nav="involved">Donate</button>
-          <button class="btn btn-secondary" data-nav="involved">Volunteer</button>
+          <button class="btn btn-primary btn-lg" data-nav="involved">Donate</button>
+          <button class="btn btn-secondary btn-lg" data-nav="involved">Volunteer</button>
         </div>
       </div>
       <div class="hero-portrait">
@@ -831,9 +832,28 @@
     </div>
   </section>
 
-  <!-- B / PRIORITIES -->
+  <!-- B / MESSAGE & VIDEO -->
   <section class="section sec">
-    <span class="tag"><b>B</b> / Priorities</span>
+    <span class="tag"><b>B</b> / Message &amp; Video</span>
+    <div class="wrap">
+      <span class="eyebrow">A Message from Justin</span>
+      <div class="grid-2" style="align-items:start;">
+        <div class="ph-block">
+          <h2 style="font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;" class="ph">Message headline goes here</h2>
+          <p>Placeholder welcome message, paragraph one — the candidate's message to visitors, supplied during onboarding.</p>
+          <p>Placeholder welcome message, paragraph two continues below the video. No real copy is drafted here.</p>
+        </div>
+        <div class="slot r-16x9">
+          <span class="slot-label">Campaign Video</span>
+          <span class="slot-ratio">Widescreen · 16 : 9 · supplied after filming</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- C / PRIORITIES -->
+  <section class="section sec">
+    <span class="tag"><b>C</b> / Priorities</span>
     <div class="wrap">
       <span class="eyebrow">Priorities</span>
       <div class="grid-3">
@@ -856,9 +876,9 @@
     </div>
   </section>
 
-  <!-- C / NEXT EVENT -->
+  <!-- D / NEXT EVENT -->
   <section class="section sec">
-    <span class="tag"><b>C</b> / Next Event</span>
+    <span class="tag"><b>D</b> / Next Event</span>
     <div class="wrap">
       <span class="eyebrow">Next Event</span>
       <div class="teaser">
@@ -872,16 +892,16 @@
     </div>
   </section>
 
-  <!-- D / ACTION BAND -->
+  <!-- E / ACTION BAND -->
   <section class="action-band on-dark sec">
-    <span class="tag"><b>D</b> / Action Band</span>
+    <span class="tag"><b>E</b> / Action Band</span>
     <div class="wrap">
       <span class="eyebrow">Get Involved</span>
       <h2 class="ph">Closing call-to-action headline goes here</h2>
       <p class="ph" style="margin-top:14px;">Placeholder closing sentence encouraging visitors to take action. Real copy supplied by the client.</p>
       <div class="hero-btns">
-        <button class="btn btn-primary" data-nav="involved">Donate</button>
-        <button class="btn btn-secondary" data-nav="involved">Volunteer</button>
+        <button class="btn btn-primary btn-lg" data-nav="involved">Donate</button>
+        <button class="btn btn-secondary btn-lg" data-nav="involved">Volunteer</button>
       </div>
     </div>
   </section>
@@ -894,13 +914,13 @@
   <header class="page-header">
     <div class="wrap">
       <span class="eyebrow">About</span>
-      <h1>About Justin Brown</h1>
+      <h1>About Justin Randall Brown</h1>
     </div>
   </header>
 
-  <!-- E / STORY -->
+  <!-- F / STORY -->
   <section class="section sec">
-    <span class="tag"><b>E</b> / Story</span>
+    <span class="tag"><b>F</b> / Story</span>
     <div class="wrap story-grid">
       <div class="ph-block">
         <span class="eyebrow">His Story</span>
@@ -914,9 +934,9 @@
     </div>
   </section>
 
-  <!-- F / FAMILY -->
+  <!-- G / FAMILY -->
   <section class="section sec">
-    <span class="tag"><b>F</b> / Family</span>
+    <span class="tag"><b>G</b> / Family</span>
     <div class="wrap">
       <span class="eyebrow">Family</span>
       <div class="ph-block" style="max-width:70ch;">
@@ -930,9 +950,9 @@
     </div>
   </section>
 
-  <!-- G / THE RECORD -->
+  <!-- H / THE RECORD -->
   <section class="section sec" style="background:var(--paper-2);">
-    <span class="tag"><b>G</b> / The Record</span>
+    <span class="tag"><b>H</b> / The Record</span>
     <div class="wrap">
       <span class="eyebrow">The Record</span>
       <h2 style="font-size:clamp(30px,4.5vw,44px);margin-bottom:8px;">A Record of Service</h2>
@@ -982,9 +1002,9 @@
     </div>
   </header>
 
-  <!-- H / UPCOMING -->
+  <!-- I / UPCOMING -->
   <section class="section sec">
-    <span class="tag"><b>H</b> / Upcoming</span>
+    <span class="tag"><b>I</b> / Upcoming</span>
     <div class="wrap">
       <span class="eyebrow">Upcoming</span>
       <div class="events-list">
@@ -1024,9 +1044,9 @@
     </div>
   </section>
 
-  <!-- I / APPEARANCE REQUEST -->
+  <!-- J / APPEARANCE REQUEST -->
   <section class="section sec" style="background:var(--paper-2);">
-    <span class="tag"><b>I</b> / Request</span>
+    <span class="tag"><b>J</b> / Request</span>
     <div class="wrap grid-2">
       <div>
         <span class="eyebrow">Invite Justin</span>
@@ -1075,9 +1095,9 @@
     </div>
   </header>
 
-  <!-- J / DONATE  +  K / VOLUNTEER on dark -->
+  <!-- K / DONATE  +  K / VOLUNTEER on dark -->
   <section class="section give-band on-dark sec" style="padding-top:88px;">
-    <span class="tag"><b>J</b> / Donate</span>
+    <span class="tag"><b>K</b> / Donate</span>
     <div class="wrap give-grid">
       <!-- Donate -->
       <div class="give-col">
@@ -1094,9 +1114,9 @@
         <p class="fine-print">Contributions are processed on a compliant platform. Required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
       </div>
 
-      <!-- K / Volunteer -->
+      <!-- L / Volunteer -->
       <div class="give-col sec" style="position:relative;">
-        <span class="tag"><b>K</b> / Volunteer</span>
+        <span class="tag"><b>L</b> / Volunteer</span>
         <span class="eyebrow">Volunteer</span>
         <h2>Lend a Hand</h2>
         <p class="ph">Placeholder line inviting supporters to volunteer.</p>
@@ -1130,9 +1150,9 @@
     </div>
   </section>
 
-  <!-- L / MORE WAYS -->
+  <!-- M / MORE WAYS -->
   <section class="section sec">
-    <span class="tag"><b>L</b> / More Ways</span>
+    <span class="tag"><b>M</b> / More Ways</span>
     <div class="wrap">
       <span class="eyebrow">More Ways to Help</span>
       <div class="grid-3">
@@ -1166,9 +1186,9 @@
 
   <section class="section sec">
     <div class="wrap contact-grid">
-      <!-- M / MESSAGE -->
+      <!-- N / MESSAGE -->
       <div class="sec" style="position:relative;">
-        <span class="tag"><b>M</b> / Message</span>
+        <span class="tag"><b>N</b> / Message</span>
         <span class="eyebrow">Send a Message</span>
         <form class="form-card" onsubmit="return false;" aria-label="Contact message form" style="border-top-color:var(--brick);">
           <div class="field-row">
@@ -1198,9 +1218,9 @@
         </form>
       </div>
 
-      <!-- N / DETAILS -->
+      <!-- O / DETAILS -->
       <div class="sec" style="position:relative;">
-        <span class="tag"><b>N</b> / Details</span>
+        <span class="tag"><b>O</b> / Details</span>
         <span class="eyebrow">Direct Contact</span>
         <div class="contact-list">
           <div class="ci">
@@ -1232,7 +1252,7 @@
   <div class="wrap">
     <div class="foot-grid">
       <div>
-        <div class="foot-name">Justin Brown</div>
+        <div class="foot-name">Justin Randall Brown</div>
         <div class="foot-office">Placeholder Office</div>
       </div>
       <nav class="foot-nav" aria-label="Footer">
