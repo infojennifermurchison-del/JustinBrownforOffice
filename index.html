@@ -125,6 +125,14 @@
     color:#AAB4CC;
   }
 
+  /* Real photos: fill the ratio box, cover-cropped */
+  .photo{
+    width:100%;
+    height:100%;
+    object-fit:cover;
+    border-radius:2px;
+    display:block;
+  }
   .r-4x5{aspect-ratio:4/5;}
   .r-1x1{aspect-ratio:1/1;}
   .r-3x2{aspect-ratio:3/2;}
@@ -783,7 +791,7 @@
 
 <!-- ===================== PROTOTYPE BANNER ===================== -->
 <div class="proto-banner" role="alert">
-  <strong>Draft for review</strong> — copy is live. Candidate photos, the donation link, and the treasurer's disclosure are still pending before launch.
+  <strong>Draft for review</strong> — copy and photos are in. The donation link and the treasurer's disclosure are still being finalized before launch.
 </div>
 
 <!-- ===================== HEADER / NAV ===================== -->
@@ -842,10 +850,7 @@
         </div>
       </div>
       <div class="hero-portrait">
-        <div class="slot r-4x5">
-          <span class="slot-label">Candidate Portrait</span>
-          <span class="slot-ratio">Vertical · 4 : 5</span>
-        </div>
+        <img class="photo r-4x5" src="images/brown-couple.jpg" alt="Justin Randall Brown with his wife, Cindy">
       </div>
     </div>
   </section>
@@ -949,10 +954,7 @@
         <p>That's why I'm running for City Council. I believe our community deserves leadership that empowers people, values accountability, serves with purpose, and leads with transparency. My goal isn't simply to hold office — it's to build trust, bring people together, and deliver meaningful results.</p>
         <p>East Orange has given so much to my family. Now, I'm ready to give even more in return. Together, we can restore trust, deliver results, and build a stronger East Orange.</p>
       </div>
-      <div class="slot r-4x5">
-        <span class="slot-label">Candidate Portrait</span>
-        <span class="slot-ratio">Vertical · 4 : 5</span>
-      </div>
+      <img class="photo r-3x2" src="images/brown-family-walk.jpg" alt="Justin Randall Brown walking with his wife and two sons">
     </div>
   </section>
 
@@ -963,10 +965,9 @@
       <div style="max-width:70ch;">
         <p>Family has always been at the center of Justin's life. Raised by his mother and father and inspired by the values passed down by his grandparents, he learned early the importance of faith, hard work, integrity, and serving others. Today, Justin and his wife, Cindy, are proud homeowners in East Orange's Second Ward, where they are raising their two sons, Justin Randall II and Micah Jeremiah. Having called East Orange home for most of his life, Justin is deeply invested in the city's future and the families who call it home.</p>
       </div>
-      <div class="family-photos">
-        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
-        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
-        <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
+      <div class="family-photos" style="grid-template-columns:repeat(2,1fr);max-width:720px;">
+        <img class="photo r-1x1" src="images/brown-couple.jpg" alt="Justin and Cindy Brown">
+        <img class="photo r-1x1" src="images/brown-family-grass.jpg" alt="The Brown family">
       </div>
     </div>
   </section>
