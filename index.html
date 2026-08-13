@@ -125,6 +125,23 @@
     color:#AAB4CC;
   }
 
+  /* Responsive video embed */
+  .video-embed{
+    position:relative;
+    width:100%;
+    border-radius:2px;
+    overflow:hidden;
+    border:var(--hair-strong);
+    background:var(--ink);
+  }
+  .video-embed iframe{
+    position:absolute;
+    inset:0;
+    width:100%;
+    height:100%;
+    border:0;
+  }
+
   /* Real photos: fill the ratio box, cover-cropped */
   .photo{
     width:100%;
@@ -791,7 +808,7 @@
 
 <!-- ===================== PROTOTYPE BANNER ===================== -->
 <div class="proto-banner" role="alert">
-  <strong>Draft for review</strong> — copy and photos are in. The donation link and the treasurer's disclosure are still being finalized before launch.
+  <strong>Draft for review</strong> — copy, photos, and video are in. The donation link and the treasurer's disclosure are still being finalized before launch.
 </div>
 
 <!-- ===================== HEADER / NAV ===================== -->
@@ -865,9 +882,12 @@
           <p>Empowerment. Accountability. Service. Transparency. As a husband, father, homeowner, and community leader, I'm committed to restoring trust through transparency, accountability, and service.</p>
           <p>Together, we can strengthen our neighborhoods, support our local businesses, invest in our youth and seniors, and build an East Orange where every resident has a voice and every family has the opportunity to thrive.</p>
         </div>
-        <div class="slot r-16x9">
-          <span class="slot-label">Campaign Video</span>
-          <span class="slot-ratio">Provided · JustinBrown2.mov · to be embedded</span>
+        <div class="video-embed r-16x9">
+          <iframe src="https://www.youtube-nocookie.com/embed/p3Rk0n0QvPE?rel=0"
+            title="Justin Randall Brown — campaign video"
+            loading="lazy"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+            allowfullscreen></iframe>
         </div>
       </div>
     </div>
