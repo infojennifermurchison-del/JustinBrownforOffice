@@ -12,14 +12,15 @@
      PALETTE + TYPE TOKENS
      ============================================================ */
   :root{
-    --ink:#121319;        /* black */
-    --ink-2:#1C1E27;      /* black, lifted (footer) */
-    --paper:#FBFBFC;      /* white */
-    --paper-2:#EDEFF6;    /* very light cool blue-gray */
-    --brick:#1E40C6;      /* royal blue (primary accent) */
-    --red-bright:#5C82FF; /* royal blue, brightened for reading on black */
-    --gold:#1E40C6;       /* legacy token kept = royal blue; dark-surface uses overridden below */
-    --stone:#6A7180;      /* neutral cool gray (muted) */
+    /* Campaign palette: NAVY + ORANGE + WHITE */
+    --ink:#0C1730;        /* deep navy-black (body text) */
+    --ink-2:#0B1E3D;      /* navy, lifted (footer / dark bands) */
+    --paper:#FFFFFF;      /* white */
+    --paper-2:#EDF1F8;    /* very light navy tint */
+    --brick:#0A2A5E;      /* NAVY (primary accent — buttons, links, structure) */
+    --red-bright:#FF8A3D; /* orange, brightened for reading on navy */
+    --gold:#E8641C;       /* ORANGE (secondary accent — rules, tops, highlights) */
+    --stone:#5E6675;      /* neutral cool gray (muted) */
 
     --serif:'Newsreader', Georgia, 'Times New Roman', serif;
     --sans:'Public Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
@@ -176,7 +177,7 @@
     font-size:13px;
     font-weight:600;
     letter-spacing:.04em;
-    border-bottom:3px solid var(--brick);
+    border-bottom:3px solid var(--gold);
     position:sticky;
     top:0;
     z-index:60;
@@ -289,7 +290,7 @@
     transition:background .15s ease, color .15s ease, border-color .15s ease;
   }
   .btn-primary{ background:var(--brick); color:var(--paper); border-color:var(--brick); }
-  .btn-primary:hover{ background:#17329E; color:var(--paper); }
+  .btn-primary:hover{ background:#061C42; color:var(--paper); }
   .btn-secondary{ background:transparent; color:var(--ink); border-color:var(--ink); }
   .btn-secondary:hover{ background:var(--ink); color:var(--paper); }
   .on-dark .btn-secondary{ color:var(--paper); border-color:var(--paper); }
@@ -307,7 +308,7 @@
     font-weight:600;
     letter-spacing:.2em;
     text-transform:uppercase;
-    color:var(--brick);
+    color:var(--gold);
     font-variant:small-caps;
     display:block;
     margin-bottom:12px;
@@ -612,7 +613,7 @@
   }
   .amount-tile[aria-pressed="true"]{
     border-color:var(--red-bright);
-    background:rgba(92,130,255,.18);
+    background:rgba(255,138,61,.18);
     color:var(--red-bright);
   }
   .fine-print{ font-size:13px; color:#A0A9C2; margin-top:14px; line-height:1.5; }
@@ -809,7 +810,7 @@
       <div class="hero-copy">
         <div class="ballot-lockup">
           <span class="ballot-mark" aria-hidden="true">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#1E40C6" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
+            <svg viewBox="0 0 24 24" fill="none" stroke="#E8641C" stroke-width="3.5" stroke-linecap="square" stroke-linejoin="miter">
               <path d="M4 12.5 L10 18.5 L20 5.5"/>
             </svg>
           </span>
