@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Justin Randall Brown — Layout Prototype</title>
+<title>Justin Randall Brown for East Orange</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap" rel="stylesheet">
@@ -476,6 +476,24 @@
     letter-spacing:-.03em;
     color:var(--ink);
   }
+  .record-cat{
+    font-family:var(--serif);
+    font-size:clamp(24px,3vw,32px);
+    line-height:1.05;
+    letter-spacing:-.01em;
+    color:var(--brick);
+    font-weight:600;
+  }
+  .record-cat span{
+    display:block;
+    font-family:var(--sans);
+    font-size:12px;
+    font-weight:700;
+    letter-spacing:.14em;
+    text-transform:uppercase;
+    color:var(--gold);
+    margin-bottom:6px;
+  }
   .record-entry h3{ font-size:24px; margin-bottom:8px; }
   .record-note{
     background:var(--paper-2);
@@ -765,7 +783,7 @@
 
 <!-- ===================== PROTOTYPE BANNER ===================== -->
 <div class="proto-banner" role="alert">
-  <strong>Layout Prototype</strong> — every word here is placeholder text for client review. Real copy is supplied later through the onboarding form.
+  <strong>Draft for review</strong> — copy is live. Candidate photos, the donation link, and the treasurer's disclosure are still pending before launch.
 </div>
 
 <!-- ===================== HEADER / NAV ===================== -->
@@ -773,7 +791,7 @@
   <div class="wrap head-inner">
     <button class="brand" data-nav="home" aria-label="Justin Randall Brown — go to Home">
       <span class="b-name">Justin&nbsp;Randall&nbsp;Brown</span>
-      <span class="b-office">Placeholder Office</span>
+      <span class="b-office">East Orange · 2nd Ward</span>
     </button>
 
     <nav class="nav" aria-label="Primary">
@@ -805,7 +823,6 @@
 
   <!-- A / HERO -->
   <section class="hero sec">
-    <span class="tag"><b>A</b> / Hero</span>
     <div class="wrap hero-grid">
       <div class="hero-copy">
         <div class="ballot-lockup">
@@ -814,11 +831,11 @@
               <path d="M4 12.5 L10 18.5 L20 5.5"/>
             </svg>
           </span>
-          <span class="ballot-office">Placeholder Office · Placeholder District</span>
+          <span class="ballot-office">East Orange City Council · 2nd Ward</span>
         </div>
         <h1>Justin Randall Brown</h1>
-        <p class="office-line ph">Candidate office line goes here — supplied by client</p>
-        <p class="hero-sent ph">This is one placeholder sentence describing the campaign in the candidate's own words, to be written by the client during onboarding.</p>
+        <p class="office-line">for East Orange City Council — 2nd Ward</p>
+        <p class="hero-sent">East Orange deserves leadership that listens, serves, and delivers. I'm running to restore trust, deliver results, and make sure every resident has a voice in shaping our future.</p>
         <div class="hero-btns">
           <button class="btn btn-primary btn-lg" data-nav="involved">Donate</button>
           <button class="btn btn-secondary btn-lg" data-nav="involved">Volunteer</button>
@@ -835,18 +852,17 @@
 
   <!-- B / MESSAGE & VIDEO -->
   <section class="section sec">
-    <span class="tag"><b>B</b> / Message &amp; Video</span>
     <div class="wrap">
       <span class="eyebrow">A Message from Justin</span>
       <div class="grid-2" style="align-items:start;">
-        <div class="ph-block">
-          <h2 style="font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;" class="ph">Message headline goes here</h2>
-          <p>Placeholder welcome message, paragraph one — the candidate's message to visitors, supplied during onboarding.</p>
-          <p>Placeholder welcome message, paragraph two continues below the video. No real copy is drafted here.</p>
+        <div>
+          <h2 style="font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;">East Orange deserves leadership that listens, serves, and delivers.</h2>
+          <p>Empowerment. Accountability. Service. Transparency. As a husband, father, homeowner, and community leader, I'm committed to restoring trust through transparency, accountability, and service.</p>
+          <p>Together, we can strengthen our neighborhoods, support our local businesses, invest in our youth and seniors, and build an East Orange where every resident has a voice and every family has the opportunity to thrive.</p>
         </div>
         <div class="slot r-16x9">
           <span class="slot-label">Campaign Video</span>
-          <span class="slot-ratio">Widescreen · 16 : 9 · supplied after filming</span>
+          <span class="slot-ratio">Provided · JustinBrown2.mov · to be embedded</span>
         </div>
       </div>
     </div>
@@ -854,24 +870,29 @@
 
   <!-- C / PRIORITIES -->
   <section class="section sec">
-    <span class="tag"><b>C</b> / Priorities</span>
     <div class="wrap">
-      <span class="eyebrow">Priorities</span>
-      <div class="grid-3">
+      <span class="eyebrow">The Platform</span>
+      <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:24px;max-width:26ch;">Empowerment. Accountability. Service. Transparency.</h2>
+      <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:22px;">
         <div class="card priority-card">
-          <span class="p-num">Priority One</span>
-          <h3 class="ph">Priority headline</h3>
-          <p class="ph">Placeholder description of the first priority. The client supplies the real position statement during onboarding.</p>
+          <span class="p-num">Empowerment</span>
+          <h3>A voice for every resident</h3>
+          <p>Give every resident a real say and every family a fair shot — because a stronger East Orange is built by the people who live here.</p>
         </div>
         <div class="card priority-card top-gold">
-          <span class="p-num">Priority Two</span>
-          <h3 class="ph">Priority headline</h3>
-          <p class="ph">Placeholder description of the second priority. The client supplies the real position statement during onboarding.</p>
+          <span class="p-num">Accountability</span>
+          <h3>Show up and follow through</h3>
+          <p>Leadership that answers for results. No empty promises — honest work, and a record you can hold me to.</p>
         </div>
-        <div class="card priority-card top-stone">
-          <span class="p-num">Priority Three</span>
-          <h3 class="ph">Priority headline</h3>
-          <p class="ph">Placeholder description of the third priority. The client supplies the real position statement during onboarding.</p>
+        <div class="card priority-card">
+          <span class="p-num">Service</span>
+          <h3>Present and listening</h3>
+          <p>Serving our youth, our seniors, our families, and the local businesses that keep our neighborhoods strong.</p>
+        </div>
+        <div class="card priority-card top-gold">
+          <span class="p-num">Transparency</span>
+          <h3>Open, honest government</h3>
+          <p>Earning trust by keeping residents informed and involved in the decisions that shape our future.</p>
         </div>
       </div>
     </div>
@@ -879,14 +900,13 @@
 
   <!-- D / NEXT EVENT -->
   <section class="section sec">
-    <span class="tag"><b>D</b> / Next Event</span>
     <div class="wrap">
       <span class="eyebrow">Next Event</span>
       <div class="teaser">
         <div>
-          <div class="t-date ph">Month 00 · 0:00 PM · Placeholder venue</div>
-          <h3 class="ph">Upcoming event name goes here</h3>
-          <p class="ph" style="margin:6px 0 0;">One-line placeholder description of the next event.</p>
+          <div class="t-date">Saturday, August 22, 2026 · 10:00 AM · East Orange</div>
+          <h3>A Special Announcement</h3>
+          <p style="margin:6px 0 0;">Join us as we come together for an important announcement about the future of our community.</p>
         </div>
         <button class="btn btn-secondary" data-nav="events">See All Events</button>
       </div>
@@ -895,11 +915,10 @@
 
   <!-- E / ACTION BAND -->
   <section class="action-band on-dark sec">
-    <span class="tag"><b>E</b> / Action Band</span>
     <div class="wrap">
       <span class="eyebrow">Get Involved</span>
-      <h2 class="ph">Closing call-to-action headline goes here</h2>
-      <p class="ph" style="margin-top:14px;">Placeholder closing sentence encouraging visitors to take action. Real copy supplied by the client.</p>
+      <h2>Restore trust. Deliver results. Build a stronger East Orange.</h2>
+      <p style="margin-top:14px;">East Orange has given so much to my family — now I'm ready to give even more in return. Give, volunteer, or bring a neighbor along. Every hand moves us forward.</p>
       <div class="hero-btns">
         <button class="btn btn-primary btn-lg" data-nav="involved">Donate</button>
         <button class="btn btn-secondary btn-lg" data-nav="involved">Volunteer</button>
@@ -921,12 +940,14 @@
 
   <!-- F / STORY -->
   <section class="section sec">
-    <span class="tag"><b>F</b> / Story</span>
     <div class="wrap story-grid">
-      <div class="ph-block">
+      <div>
         <span class="eyebrow">His Story</span>
-        <p>Placeholder biography paragraph one. This block is reserved for the candidate's story, which the client writes during onboarding. No biographical facts are drafted here.</p>
-        <p>Placeholder biography paragraph two continues the story. Everything a visitor reads on this page is placeholder text until the client supplies the real copy.</p>
+        <p>I didn't decide to serve because of politics — I decided to serve because I care deeply about my community.</p>
+        <p>Over the years, I've had the opportunity to work with residents, local businesses, seniors, and young people, and one thing has become clear: people want leadership that is present, listens, and follows through. Too many voices feel unheard, and too many opportunities are left on the table.</p>
+        <p>As a husband, father, and homeowner in East Orange's Second Ward, this isn't just where I live — it's where my family is building our future. The same streets my children grow up on are the streets I want to help make stronger, safer, and full of opportunity for every family.</p>
+        <p>That's why I'm running for City Council. I believe our community deserves leadership that empowers people, values accountability, serves with purpose, and leads with transparency. My goal isn't simply to hold office — it's to build trust, bring people together, and deliver meaningful results.</p>
+        <p>East Orange has given so much to my family. Now, I'm ready to give even more in return. Together, we can restore trust, deliver results, and build a stronger East Orange.</p>
       </div>
       <div class="slot r-4x5">
         <span class="slot-label">Candidate Portrait</span>
@@ -937,11 +958,10 @@
 
   <!-- G / FAMILY -->
   <section class="section sec">
-    <span class="tag"><b>G</b> / Family</span>
     <div class="wrap">
       <span class="eyebrow">Family</span>
-      <div class="ph-block" style="max-width:70ch;">
-        <p>Placeholder family paragraph. <span class="ph" style="text-decoration:underline dotted var(--brick);color:var(--brick);">Note to client: decide how much of your family is made public here, and be especially deliberate about whether and how children are shown or named.</span> Nothing is drafted until you supply it.</p>
+      <div style="max-width:70ch;">
+        <p>Family has always been at the center of Justin's life. Raised by his mother and father and inspired by the values passed down by his grandparents, he learned early the importance of faith, hard work, integrity, and serving others. Today, Justin and his wife, Cindy, are proud homeowners in East Orange's Second Ward, where they are raising their two sons, Justin Randall II and Micah Jeremiah. Having called East Orange home for most of his life, Justin is deeply invested in the city's future and the families who call it home.</p>
       </div>
       <div class="family-photos">
         <div class="slot r-1x1"><span class="slot-label">Family Photo</span><span class="slot-ratio">Square · 1 : 1</span></div>
@@ -953,38 +973,37 @@
 
   <!-- H / THE RECORD -->
   <section class="section sec" style="background:var(--paper-2);">
-    <span class="tag"><b>H</b> / The Record</span>
     <div class="wrap">
       <span class="eyebrow">The Record</span>
       <h2 style="font-size:clamp(30px,4.5vw,44px);margin-bottom:8px;">A Record of Service</h2>
-      <p class="ph" style="max-width:56ch;margin-bottom:20px;">Placeholder introduction to the record. The dated entries below are structural placeholders; the client supplies each year and description.</p>
+      <p style="max-width:60ch;margin-bottom:20px;">Justin has dedicated his career to public service — in government, in the nonprofit sector, and in the neighborhoods he calls home. His experience has always been centered on helping people, solving problems, and strengthening the community.</p>
       <div class="record">
         <div class="record-row">
-          <div class="record-year">0000</div>
-          <div class="record-entry ph-block">
-            <h3 class="ph">Record entry headline</h3>
-            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          <div class="record-cat"><span>City Hall</span>Deputy City Clerk</div>
+          <div class="record-entry">
+            <h3>Serving East Orange residents</h3>
+            <p>As a former Deputy City Clerk for the City of East Orange, Justin served residents through constituent services and government administration — bringing experience in customer service, management, and problem-solving to City Hall.</p>
           </div>
         </div>
         <div class="record-row">
-          <div class="record-year">0000</div>
-          <div class="record-entry ph-block">
-            <h3 class="ph">Record entry headline</h3>
-            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          <div class="record-cat"><span>Nonprofit</span>JusMotivated</div>
+          <div class="record-entry">
+            <h3>Founder &amp; President, 501(c)(3)</h3>
+            <p>Through JusMotivated, Justin has worked alongside residents, seniors, youth, families, and local business owners to create opportunities, support neighborhood initiatives, and improve quality of life across East Orange through mentorship, advocacy, and service.</p>
           </div>
         </div>
         <div class="record-row">
-          <div class="record-year">0000</div>
-          <div class="record-entry ph-block">
-            <h3 class="ph">Record entry headline</h3>
-            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          <div class="record-cat"><span>Education</span>Political Science</div>
+          <div class="record-entry">
+            <h3>Johnson C. Smith &amp; New Jersey City University</h3>
+            <p>Justin attended Johnson C. Smith University before earning a Bachelor of Arts in Political Science from New Jersey City University.</p>
           </div>
         </div>
         <div class="record-row">
-          <div class="record-year">0000</div>
-          <div class="record-entry ph-block">
-            <h3 class="ph">Record entry headline</h3>
-            <p>Placeholder description of this dated entry. Supplied by the client during onboarding.</p>
+          <div class="record-cat"><span>Community</span>Second Ward</div>
+          <div class="record-entry">
+            <h3>Husband, father, and homeowner</h3>
+            <p>A homeowner and community leader in East Orange's Second Ward, Justin is raising his family on the same streets he's committed to making stronger, safer, and full of opportunity.</p>
           </div>
         </div>
       </div>
@@ -1005,54 +1024,29 @@
 
   <!-- I / UPCOMING -->
   <section class="section sec">
-    <span class="tag"><b>I</b> / Upcoming</span>
     <div class="wrap">
       <span class="eyebrow">Upcoming</span>
       <div class="events-list">
         <div class="event-row">
-          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
+          <div class="date-block"><span class="d-month">Aug</span><span class="d-day">22</span></div>
           <div class="event-mid">
-            <h3 class="ph">Event name goes here</h3>
-            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
+            <h3>Special Announcement</h3>
+            <p class="event-meta">Saturday, August 22, 2026 · 10:00 AM · 4 Birchwood Ave, East Orange, NJ 07018</p>
           </div>
-          <button class="btn btn-primary btn-sm">RSVP</button>
-        </div>
-        <div class="event-row">
-          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
-          <div class="event-mid">
-            <h3 class="ph">Event name goes here</h3>
-            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
-          </div>
-          <button class="btn btn-primary btn-sm">RSVP</button>
-        </div>
-        <div class="event-row">
-          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
-          <div class="event-mid">
-            <h3 class="ph">Event name goes here</h3>
-            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
-          </div>
-          <button class="btn btn-primary btn-sm">RSVP</button>
-        </div>
-        <div class="event-row">
-          <div class="date-block"><span class="d-month">Mon</span><span class="d-day">00</span></div>
-          <div class="event-mid">
-            <h3 class="ph">Event name goes here</h3>
-            <p class="event-meta ph">0:00 PM · Placeholder venue · Placeholder city</p>
-          </div>
-          <button class="btn btn-primary btn-sm">RSVP</button>
+          <button class="btn btn-primary btn-sm" data-nav="contact">RSVP</button>
         </div>
       </div>
+      <p style="margin-top:24px;color:var(--stone);">More events coming soon. Check back or <button class="link-inline" data-nav="involved" style="background:none;border:none;padding:0;color:var(--brick);font:inherit;cursor:pointer;text-decoration:underline;">join the campaign</button> to be the first to know.</p>
     </div>
   </section>
 
   <!-- J / APPEARANCE REQUEST -->
   <section class="section sec" style="background:var(--paper-2);">
-    <span class="tag"><b>J</b> / Request</span>
     <div class="wrap grid-2">
       <div>
         <span class="eyebrow">Invite Justin</span>
         <h2 style="font-size:clamp(28px,4vw,40px);margin-bottom:12px;">Request an Appearance</h2>
-        <p class="ph" style="max-width:46ch;">Placeholder text inviting organizations to request an appearance. The client supplies the real language during onboarding.</p>
+        <p style="max-width:46ch;">Invite Justin to speak at your block association, community meeting, church, or organization. Share the details below and the campaign will follow up.</p>
       </div>
       <form class="form-card" onsubmit="return false;" aria-label="Appearance request form">
         <div class="field-row">
@@ -1098,29 +1092,27 @@
 
   <!-- K / DONATE  +  K / VOLUNTEER on dark -->
   <section class="section give-band on-dark sec" style="padding-top:88px;">
-    <span class="tag"><b>K</b> / Donate</span>
     <div class="wrap give-grid">
       <!-- Donate -->
       <div class="give-col">
         <span class="eyebrow">Donate</span>
         <h2>Contribute</h2>
-        <p class="ph">Placeholder line about contributing to the campaign.</p>
+        <p>Your support powers this campaign — every contribution helps us reach more neighbors across the Second Ward.</p>
         <div class="amount-tiles" role="group" aria-label="Suggested contribution amounts">
-          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
-          <button type="button" class="amount-tile" aria-pressed="true">$00</button>
-          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
-          <button type="button" class="amount-tile" aria-pressed="false">$00</button>
+          <button type="button" class="amount-tile" aria-pressed="false">$25</button>
+          <button type="button" class="amount-tile" aria-pressed="true">$50</button>
+          <button type="button" class="amount-tile" aria-pressed="false">$100</button>
+          <button type="button" class="amount-tile" aria-pressed="false">$250</button>
         </div>
         <button class="btn btn-primary btn-block">Continue to Give</button>
-        <p class="fine-print">Contributions are processed on a compliant platform. Required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
+        <p class="fine-print">The secure donation link is being finalized and will be live shortly. Contributions are processed on a compliant platform; required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
       </div>
 
       <!-- L / Volunteer -->
       <div class="give-col sec" style="position:relative;">
-        <span class="tag"><b>L</b> / Volunteer</span>
         <span class="eyebrow">Volunteer</span>
         <h2>Lend a Hand</h2>
-        <p class="ph">Placeholder line inviting supporters to volunteer.</p>
+        <p>Knock doors, make calls, host a meet-and-greet, or put a sign in your yard. Tell us how you'd like to help and we'll be in touch.</p>
         <form onsubmit="return false;" aria-label="Volunteer sign-up form" style="margin-top:16px;">
           <div class="form-field">
             <label for="v-name">Name</label>
@@ -1153,21 +1145,20 @@
 
   <!-- M / MORE WAYS -->
   <section class="section sec">
-    <span class="tag"><b>M</b> / More Ways</span>
     <div class="wrap">
       <span class="eyebrow">More Ways to Help</span>
       <div class="grid-3">
         <div class="card">
-          <h3 class="ph">Way to help</h3>
-          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+          <h3>Host a yard sign</h3>
+          <p>Show your support in your yard or window and help spread the word across the neighborhood.</p>
         </div>
         <div class="card top-gold">
-          <h3 class="ph">Way to help</h3>
-          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+          <h3>Invite Justin</h3>
+          <p>Ask Justin to speak at your block association, community meeting, or organization. <button class="link-inline" data-nav="events" style="background:none;border:none;padding:0;color:var(--brick);font:inherit;cursor:pointer;text-decoration:underline;">Request an appearance</button>.</p>
         </div>
         <div class="card top-stone">
-          <h3 class="ph">Way to help</h3>
-          <p class="ph">Placeholder description of another way supporters can help the campaign.</p>
+          <h3>Spread the word</h3>
+          <p>Talk to your neighbors, share the campaign, and bring someone new along to the next event.</p>
         </div>
       </div>
     </div>
@@ -1189,7 +1180,6 @@
     <div class="wrap contact-grid">
       <!-- N / MESSAGE -->
       <div class="sec" style="position:relative;">
-        <span class="tag"><b>N</b> / Message</span>
         <span class="eyebrow">Send a Message</span>
         <form class="form-card" onsubmit="return false;" aria-label="Contact message form" style="border-top-color:var(--brick);">
           <div class="field-row">
@@ -1205,10 +1195,10 @@
           <div class="form-field">
             <label for="c-subject">Subject</label>
             <select id="c-subject" name="subject">
-              <option>Placeholder — General</option>
-              <option>Placeholder — Media</option>
-              <option>Placeholder — Volunteer</option>
-              <option>Placeholder — Events</option>
+              <option>General</option>
+              <option>Volunteering</option>
+              <option>Events &amp; appearances</option>
+              <option>Press &amp; media</option>
             </select>
           </div>
           <div class="form-field">
@@ -1221,24 +1211,23 @@
 
       <!-- O / DETAILS -->
       <div class="sec" style="position:relative;">
-        <span class="tag"><b>O</b> / Details</span>
         <span class="eyebrow">Direct Contact</span>
         <div class="contact-list">
           <div class="ci">
             <div class="ci-label">Email</div>
-            <div class="ph">placeholder@example.com</div>
+            <div><a href="mailto:bjustrt@yahoo.com">bjustrt@yahoo.com</a></div>
           </div>
           <div class="ci">
             <div class="ci-label">Phone</div>
-            <div class="ph">(000) 000-0000</div>
+            <div><a href="tel:+19732806220">(973) 280-6220</a></div>
           </div>
           <div class="ci">
-            <div class="ci-label">Mailing Address</div>
-            <div class="ph">Placeholder address line, City, ST 00000</div>
+            <div class="ci-label">Where We're Running</div>
+            <div>East Orange City Council · 2nd Ward</div>
           </div>
           <div class="ci">
-            <div class="ci-label">Press Inquiries</div>
-            <div class="ph">placeholder-press@example.com</div>
+            <div class="ci-label">Follow the Campaign</div>
+            <div style="color:var(--stone);">Social channels coming soon</div>
           </div>
         </div>
       </div>
@@ -1254,7 +1243,7 @@
     <div class="foot-grid">
       <div>
         <div class="foot-name">Justin Randall Brown</div>
-        <div class="foot-office">Placeholder Office</div>
+        <div class="foot-office">East Orange City Council · 2nd Ward</div>
       </div>
       <nav class="foot-nav" aria-label="Footer">
         <button data-nav="home">Home</button>
