@@ -1,20 +1,15 @@
 # Campaign images
 
-## Already added
-- `brown-family-grass.jpg` — family in the park (About → Family)
-- `brown-family-walk.jpg` — family walking (About → Family)
-- `brown-couple.jpg` — Justin and Cindy (About → Family)
+All current images are in place and referenced by the site:
 
-## Still needed — drop these two files in with these exact names
-| Filename                | Where it appears                     | Recommended crop                |
-|-------------------------|--------------------------------------|---------------------------------|
-| `campaign-banner.jpg`   | Homepage — full-width top banner     | Wide, ~1400×560 (about 2.5 : 1) |
-| `headshot.jpg`          | About page — beside the bio          | Vertical portrait (4 : 5)       |
+| Filename                  | Where it appears                          |
+|---------------------------|-------------------------------------------|
+| `campaign-banner.jpg`     | Homepage — full-width top banner          |
+| `headshot.jpg`            | About page — beside the bio               |
+| `brown-family-grass.jpg`  | About page — Family (park)                |
+| `brown-family-walk.jpg`   | About page — Family (walking)             |
+| `brown-couple.jpg`        | About page — Family (Justin & Cindy)      |
 
-Until each file is present, its spot shows a labeled dashed placeholder so the
-layout never looks broken. JPG or PNG both work; keep files reasonably sized
-(ideally under ~1–2 MB each) so pages load quickly.
-
-The family photos are shown in square frames with the focus point toward the
-top of the image so heads are not cut off; a different crop can be set per photo
-if preferred.
+To swap any image, replace the file using the same filename (or send a new one
+and we'll update the reference). The banner and headshot are large files and
+could be compressed before launch for faster loading.
