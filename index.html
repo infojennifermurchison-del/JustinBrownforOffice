@@ -806,9 +806,9 @@
   /* ============================================================
      LATEST ROUND: banner, image fallbacks, donate, social, forms
      ============================================================ */
-  /* Full-width homepage campaign banner */
-  .home-banner{ position:relative; width:100%; background:var(--ink); }
-  .home-banner img{ width:100%; height:auto; display:block; }
+  /* Homepage campaign banner — capped so it isn't overwhelming */
+  .home-banner{ position:relative; width:100%; max-width:900px; margin:20px auto 6px; }
+  .home-banner img{ width:100%; height:auto; display:block; border-radius:2px; }
   .home-banner .img-missing-note{
     display:none; aspect-ratio:1400/560; width:100%;
     align-items:center; justify-content:center; flex-direction:column; gap:6px;
@@ -916,19 +916,17 @@
   <section class="section sec">
     <div class="wrap">
       <span class="eyebrow">A Message from Justin</span>
-      <div class="grid-2" style="align-items:start;">
-        <div>
-          <h2 style="font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;">East Orange deserves leadership that listens, serves, and delivers.</h2>
-          <p>Empowerment. Accountability. Service. Transparency. As a husband, father, homeowner, and community leader, I'm committed to restoring trust through transparency, accountability, and service.</p>
-          <p>Together, we can strengthen our neighborhoods, support our local businesses, invest in our youth and seniors, and build an East Orange where every resident has a voice and every family has the opportunity to thrive.</p>
-        </div>
-        <div class="video-embed r-16x9">
-          <iframe src="https://www.youtube-nocookie.com/embed/p3Rk0n0QvPE?rel=0"
-            title="Justin Randall Brown — campaign video"
-            loading="lazy"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-            allowfullscreen></iframe>
-        </div>
+      <h2 style="font-size:clamp(26px,3.5vw,38px);margin-bottom:14px;max-width:24ch;">East Orange deserves leadership that listens, serves, and delivers.</h2>
+      <div style="max-width:75ch;">
+        <p>Empowerment. Accountability. Service. Transparency. As a husband, father, homeowner, and community leader, I'm committed to restoring trust through transparency, accountability, and service.</p>
+        <p>Together, we can strengthen our neighborhoods, support our local businesses, invest in our youth and seniors, and build an East Orange where every resident has a voice and every family has the opportunity to thrive.</p>
+      </div>
+      <div class="video-embed r-16x9" style="margin-top:28px;">
+        <iframe src="https://www.youtube-nocookie.com/embed/p3Rk0n0QvPE?rel=0"
+          title="Justin Randall Brown — campaign video"
+          loading="lazy"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+          allowfullscreen></iframe>
       </div>
     </div>
   </section>
