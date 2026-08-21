@@ -17,9 +17,9 @@
     --ink-2:#0B1E3D;      /* navy, lifted (footer / dark bands) */
     --paper:#FFFFFF;      /* white */
     --paper-2:#EDF1F8;    /* very light navy tint */
-    --brick:#0A2A5E;      /* NAVY (primary accent — buttons, links, structure) */
+    --brick:#0A2A5E;      /* NAVY (primary accent - buttons, links, structure) */
     --red-bright:#FF8A3D; /* orange, brightened for reading on navy */
-    --gold:#E8641C;       /* ORANGE (secondary accent — rules, tops, highlights) */
+    --gold:#E8641C;       /* ORANGE (secondary accent - rules, tops, highlights) */
     --stone:#5E6675;      /* neutral cool gray (muted) */
 
     --serif:'Newsreader', Georgia, 'Times New Roman', serif;
@@ -322,6 +322,12 @@
   .on-dark .btn-secondary:hover{ background:var(--paper); color:var(--ink); }
   .btn-sm{ padding:9px 16px; font-size:12px; }
   .btn-lg{ padding:17px 34px; font-size:16px; letter-spacing:.07em; }
+  .btn-gold{ background:var(--gold); color:#fff; border-color:var(--gold); }
+  .btn-gold:hover{ background:#cf560f; border-color:#cf560f; color:#fff; }
+  /* Mobile-only Donate button under the banner */
+  .mobile-donate{ display:none; }
+  @media (max-width:760px){ .mobile-donate{ display:block; padding:6px 24px 2px; } }
+  .mobile-nav .mn-donate{ color:var(--gold); }
   .btn-block{ width:100%; }
 
   /* ============================================================
@@ -474,7 +480,7 @@
   .action-band .hero-btns{ margin-top:26px; }
 
   /* ============================================================
-     ABOUT — STORY / FAMILY / RECORD
+     ABOUT - STORY / FAMILY / RECORD
      ============================================================ */
   .story-grid{
     display:grid;
@@ -751,7 +757,7 @@
     border-bottom:2px solid var(--gold);
   }
   .mobile-nav.open{ display:block; }
-  .mobile-nav button{
+  .mobile-nav button, .mobile-nav a{
     display:block;
     width:100%;
     text-align:left;
@@ -766,8 +772,10 @@
     text-transform:uppercase;
     padding:15px 24px;
     cursor:pointer;
+    text-decoration:none;
   }
   .mobile-nav button.active{ color:var(--red-bright); }
+  .mobile-nav a.mn-donate{ color:var(--gold); }
 
   /* ============================================================
      RESPONSIVE
@@ -806,7 +814,7 @@
   /* ============================================================
      LATEST ROUND: banner, image fallbacks, donate, social, forms
      ============================================================ */
-  /* Homepage campaign banner — spans the site content width, not full-bleed */
+  /* Homepage campaign banner - spans the site content width, not full-bleed */
   .home-banner{ position:relative; width:100%; margin:16px auto 8px; }
   .home-banner img{ width:100%; height:auto; display:block; border-radius:2px; }
   /* Message section: text + a wider video column */
@@ -864,13 +872,13 @@
 
 <!-- ===================== PROTOTYPE BANNER ===================== -->
 <div class="proto-banner" role="alert">
-  <strong>Draft for review</strong> — copy, photos, video, and banner are in. The ActBlue donation link and campaign phone number are still being finalized before launch.
+  <strong>Draft for review</strong> before launch. Everything is in; this notice will be removed when the site goes live.
 </div>
 
 <!-- ===================== HEADER / NAV ===================== -->
 <header class="site-head">
   <div class="wrap head-inner">
-    <button class="brand" data-nav="home" aria-label="Justin Randall Brown — go to Home">
+    <button class="brand" data-nav="home" aria-label="Justin Randall Brown, go to Home">
       <span class="b-name">Justin&nbsp;Randall&nbsp;Brown</span>
       <span class="b-office">East Orange 2nd Ward City Council</span>
     </button>
@@ -881,7 +889,7 @@
       <button class="nav-link" data-nav="events">Events</button>
       <button class="nav-link" data-nav="involved">Get Involved</button>
       <button class="nav-link" data-nav="contact">Contact</button>
-      <button class="btn btn-primary nav-cta" data-nav="involved">Donate</button>
+      <a class="btn btn-gold nav-cta" href="https://secure.actblue.com/donate/electjustinbrown" target="_blank" rel="noopener">Donate</a>
     </nav>
 
     <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="mobileNav">Menu</button>
@@ -892,6 +900,7 @@
     <button data-nav="events">Events</button>
     <button data-nav="involved">Get Involved</button>
     <button data-nav="contact">Contact</button>
+    <a class="mn-donate" href="https://secure.actblue.com/donate/electjustinbrown" target="_blank" rel="noopener">Donate</a>
   </nav>
 </header>
 
@@ -907,7 +916,7 @@
     <div class="wrap">
     <div class="home-banner">
       <img src="images/campaign-banner.jpg"
-           alt="Democrat Justin Randall Brown for East Orange 2nd Ward City Council — Empowerment. Accountability. Service. Transparency."
+           alt="Democrat Justin Randall Brown for East Orange 2nd Ward City Council. Empowerment. Accountability. Service. Transparency."
            onerror="this.closest('.home-banner').classList.add('img-missing')">
       <div class="img-missing-note">
         <span class="slot-label">Campaign Banner</span>
@@ -916,6 +925,11 @@
     </div>
     </div>
   </section>
+
+  <!-- Mobile-only Donate button (visible without opening the menu) -->
+  <div class="mobile-donate">
+    <a class="btn btn-gold btn-block btn-lg" href="https://secure.actblue.com/donate/electjustinbrown" target="_blank" rel="noopener">Donate</a>
+  </div>
 
   <!-- B / MESSAGE & VIDEO -->
   <section class="section sec">
@@ -929,7 +943,7 @@
         </div>
         <div class="video-embed r-16x9">
           <iframe src="https://www.youtube-nocookie.com/embed/p3Rk0n0QvPE?rel=0"
-            title="Justin Randall Brown — campaign video"
+            title="Justin Randall Brown campaign video"
             loading="lazy"
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
             allowfullscreen></iframe>
@@ -947,12 +961,12 @@
         <div class="card priority-card">
           <span class="p-num">Empowerment</span>
           <h3>A voice for every resident</h3>
-          <p>Give every resident a real say and every family a fair shot — because a stronger East Orange is built by the people who live here.</p>
+          <p>Give every resident a real say and every family a fair shot, because a stronger East Orange is built by the people who live here.</p>
         </div>
         <div class="card priority-card top-gold">
           <span class="p-num">Accountability</span>
           <h3>Show up and follow through</h3>
-          <p>Leadership that answers for results. No empty promises — honest work, and a record you can hold me to.</p>
+          <p>Leadership that answers for results. No empty promises. Honest work, and a record you can hold me to.</p>
         </div>
         <div class="card priority-card">
           <span class="p-num">Service</span>
@@ -988,9 +1002,9 @@
     <div class="wrap">
       <span class="eyebrow">Get Involved</span>
       <h2>Restore trust. Deliver results. Build a stronger East Orange.</h2>
-      <p style="margin-top:14px;">East Orange has given so much to my family — now I'm ready to give even more in return. Give, volunteer, or bring a neighbor along. Every hand moves us forward.</p>
+      <p style="margin-top:14px;">East Orange has given so much to my family. Now I'm ready to give even more in return. Give, volunteer, or bring a neighbor along. Every hand moves us forward.</p>
       <div class="hero-btns">
-        <button class="btn btn-primary btn-lg" data-nav="involved">Donate</button>
+        <a class="btn btn-gold btn-lg" href="https://secure.actblue.com/donate/electjustinbrown" target="_blank" rel="noopener">Donate</a>
         <button class="btn btn-secondary btn-lg" data-nav="involved">Volunteer</button>
       </div>
     </div>
@@ -1013,11 +1027,11 @@
     <div class="wrap story-grid">
       <div>
         <span class="eyebrow">His Story</span>
-        <p>I didn't decide to serve because of politics — I decided to serve because I care deeply about my community.</p>
+        <p>I didn't decide to serve because of politics. I decided to serve because I care deeply about my community.</p>
         <p>Over the years, I've had the opportunity to work with residents, local businesses, seniors, and young people, and one thing has become clear: people want leadership that is present, listens, and follows through. Too many voices feel unheard, and too many opportunities are left on the table.</p>
-        <p>As a husband, father, and homeowner in East Orange's Second Ward, this isn't just where I live — it's where my family is building our future. The same streets my children grow up on are the streets I want to help make stronger, safer, and full of opportunity for every family.</p>
-        <p>That's why I'm running for City Council. I believe our community deserves leadership that empowers people, values accountability, serves with purpose, and leads with transparency. My goal isn't simply to hold office — it's to build trust, bring people together, and deliver meaningful results.</p>
-        <p>East Orange has given so much to my family. Now, I'm ready to give even more in return. Together, we can restore trust, deliver results, and build a stronger East Orange.</p>
+        <p>As a husband, father, and homeowner in East Orange's Second Ward, this isn't just where I live. It's where my family is building our future. The same streets my children grow up on are the streets I want to help make stronger, safer, and full of opportunity for every family.</p>
+        <p>That's why I'm running for City Council. I believe our community deserves leadership that empowers people, values accountability, serves with purpose, and leads with transparency. My goal isn't simply to hold office. It's to build trust, bring people together, and deliver meaningful results.</p>
+        <p>East Orange has contributed tremendously to my growth and has given so much to my family. As a 2004 graduate of East Orange Campus High, that led me to study Political Science at Johnson C. Smith University. I earned my BA in Political Science from New Jersey City University, and now I'm ready to give even more in return. Together, we can restore trust, deliver results, and build a stronger East Orange.</p>
       </div>
       <div class="img-frame r-4x5">
         <img src="images/headshot.jpg" alt="Justin Randall Brown headshot"
@@ -1037,10 +1051,10 @@
       <div style="max-width:70ch;">
         <p>Family has always been at the center of Justin's life. Raised by his mother and father and inspired by the values passed down by his grandparents, he learned early the importance of faith, hard work, integrity, and serving others. Today, Justin and his wife, Cindy, are proud homeowners in East Orange's Second Ward, where they are raising their two sons, Justin Randall II and Micah Jeremiah. Having called East Orange home for most of his life, Justin is deeply invested in the city's future and the families who call it home.</p>
       </div>
-      <div class="family-photos" style="grid-template-columns:repeat(3,1fr);">
-        <img class="photo top r-1x1" src="images/brown-family-grass.jpg" alt="The Brown family in the park">
-        <img class="photo top r-1x1" src="images/brown-family-walk.jpg" alt="Justin Randall Brown walking with his family">
-        <img class="photo top r-1x1" src="images/brown-couple.jpg" alt="Justin and Cindy Brown">
+      <div class="family-photos" style="grid-template-columns:repeat(3,1fr);gap:20px;">
+        <img class="photo top r-4x5" src="images/brown-family-grass.jpg" alt="The Brown family in the park">
+        <img class="photo top r-4x5" src="images/brown-family-walk.jpg" alt="Justin Randall Brown walking with his family">
+        <img class="photo top r-4x5" src="images/brown-couple.jpg" alt="Justin and Cindy Brown">
       </div>
     </div>
   </section>
@@ -1050,7 +1064,7 @@
     <div class="wrap">
       <span class="eyebrow">The Record</span>
       <h2 style="font-size:clamp(30px,4.5vw,44px);margin-bottom:8px;">A Record of Service</h2>
-      <p style="max-width:60ch;margin-bottom:20px;">Justin has dedicated his career to public service — in government, in the nonprofit sector, and in the neighborhoods he calls home. His experience has always been centered on helping people, solving problems, and strengthening the community.</p>
+      <p style="max-width:60ch;margin-bottom:20px;">Justin has dedicated his career to public service in government, in the nonprofit sector, and in the neighborhoods he calls home. His experience has always been centered on helping people, solving problems, and strengthening the community.</p>
       <div class="record">
         <div class="record-row">
           <div class="record-cat"><span>City Hall</span>Deputy City Clerk</div>
@@ -1071,13 +1085,6 @@
           <div class="record-entry">
             <h3>Founder &amp; President, JusMotivated</h3>
             <p>Led community initiatives supporting youth, families, entrepreneurs, and local businesses; connected small businesses with funding opportunities, resources, and increased community visibility; developed mentorship and leadership opportunities for youth and young entrepreneurs; and organized community events, outreach efforts, and family-focused programs that provide resources and strengthen community connections.</p>
-          </div>
-        </div>
-        <div class="record-row">
-          <div class="record-cat"><span>Education</span>Political Science</div>
-          <div class="record-entry">
-            <h3>Johnson C. Smith &amp; New Jersey City University</h3>
-            <p>Justin attended Johnson C. Smith University before earning a Bachelor of Arts in Political Science from New Jersey City University.</p>
           </div>
         </div>
         <div class="record-row">
@@ -1186,18 +1193,9 @@
       <div class="give-col">
         <span class="eyebrow">Donate</span>
         <h2>Contribute</h2>
-        <p>Your support powers this campaign — every contribution helps us reach more neighbors across the Second Ward.</p>
-        <div class="amount-tiles six" role="group" aria-label="Suggested contribution amounts">
-          <button type="button" class="amount-tile" aria-pressed="false">$50</button>
-          <button type="button" class="amount-tile" aria-pressed="true">$100</button>
-          <button type="button" class="amount-tile" aria-pressed="false">$250</button>
-          <button type="button" class="amount-tile" aria-pressed="false">$500</button>
-          <button type="button" class="amount-tile" aria-pressed="false">$1,000</button>
-          <button type="button" class="amount-tile custom" aria-pressed="false">Other / Custom</button>
-        </div>
-        <a class="btn btn-primary btn-block btn-lg" href="#" target="_blank" rel="noopener" aria-label="Continue to give on ActBlue">Continue to Give</a>
-        <p class="pending-note">ActBlue link pending approval — will be connected once received.</p>
-        <p class="fine-print">Contributions are processed on ActBlue, a compliant platform. Required contributor information and eligibility language is supplied by the treasurer and confirmed before launch.</p>
+        <p>Your support powers this campaign. Every contribution helps us reach more neighbors across the Second Ward.</p>
+        <a class="btn btn-gold btn-block btn-lg" href="https://secure.actblue.com/donate/electjustinbrown" target="_blank" rel="noopener">Donate on ActBlue</a>
+        <p class="fine-print">Contributions are processed securely on ActBlue, where you can choose your contribution amount. Required contributor information and eligibility language is provided by the treasurer.</p>
       </div>
 
       <!-- L / Volunteer -->
@@ -1233,7 +1231,7 @@
           </div>
           <button type="submit" class="btn btn-secondary btn-block">Sign Me Up</button>
           <div class="form-confirm" id="volunteerConfirm" role="status" aria-live="polite">
-            Thank you — your information was received. A member of the campaign team will be in touch, and you've been added to our volunteer list.
+            Thank you! Your information was received. A member of the campaign team will be in touch, and you've been added to our volunteer list.
           </div>
           <p class="pending-note">List capture connects to the campaign's email/volunteer system before launch.</p>
         </form>
@@ -1321,12 +1319,12 @@
           </div>
           <div class="ci">
             <div class="ci-label">Phone</div>
-            <div class="ph">Coming soon — number confirmed before launch</div>
+            <div><a href="tel:+19736095296">973-609-5296</a></div>
           </div>
           <div class="ci">
             <div class="ci-label">Follow the Campaign</div>
             <div class="social-row" style="margin-top:6px;">
-              <a class="social-link" href="https://www.instagram.com/electjustinbrown" target="_blank" rel="noopener" aria-label="Instagram — @electjustinbrown">
+              <a class="social-link" href="https://www.instagram.com/electjustinbrown/" target="_blank" rel="noopener" aria-label="Instagram: @electjustinbrown">
                 <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
                   <rect x="2" y="2" width="20" height="20" rx="5"/>
                   <circle cx="12" cy="12" r="4"/>
@@ -1336,7 +1334,7 @@
               </a>
             </div>
             <div class="social-row" style="margin-top:10px;">
-              <a class="social-link" href="https://www.facebook.com/ElectJustinBrown" target="_blank" rel="noopener" aria-label="Facebook — Elect Justin Brown">
+              <a class="social-link" href="https://www.facebook.com/electjustinbrown/" target="_blank" rel="noopener" aria-label="Facebook: Elect Justin Brown">
                 <svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
                   <path d="M22 12a10 10 0 1 0-11.56 9.88v-6.99H7.9V12h2.54V9.8c0-2.5 1.49-3.89 3.77-3.89 1.09 0 2.24.2 2.24.2v2.46h-1.26c-1.24 0-1.63.77-1.63 1.56V12h2.78l-.44 2.89h-2.34v6.99A10 10 0 0 0 22 12z"/>
                 </svg>
@@ -1445,7 +1443,7 @@
   });
 
   // volunteer form: show confirmation on submit
-  // NOTE: prototype only — connect this to the campaign's email/volunteer
+  // NOTE: prototype only - connect this to the campaign's email/volunteer
   // list service (form endpoint) before launch to actually capture data.
   var vForm = document.getElementById('volunteerForm');
   var vConfirm = document.getElementById('volunteerConfirm');
